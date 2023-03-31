@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from blog.models import Category, Article, Product
 from django.shortcuts import render,HttpResponse, redirect
 from blog.forms import ArtForm, CatForm, ProdForm
@@ -264,3 +264,19 @@ def buscar_p(request):
     return HttpResponse(respuesta)
     
 
+def modificar_articulo(request, id):
+
+    articulo = get_object_or_404(Article, id = id)
+
+    data = {
+        'form' : ArtForm(instance= articulo)
+    }
+
+    if request.method == 'POST':
+        formulario = ArtForm(data = request.POST, instance = articulo, files = request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('list_articles')
+        
+        data['form'] = formulario
+    return render(request, 'articles/modificar.html', data)

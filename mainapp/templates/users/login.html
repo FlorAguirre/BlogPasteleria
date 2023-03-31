@@ -1,0 +1,70 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  <title>
+    {% block title %}
+    {{title}}
+    {% endblock %}
+  </title>
+
+
+  <link rel="stylesheet" href=" {% static 'css/bootstrap.min.css' %}" />
+
+
+  <link rel="stylesheet" href=" {% static 'css/styles.css' %}" />
+
+</head>
+
+
+
+
+
+
+{%block content %}
+    <body class="">
+        <div class="box">
+    <h1 class="">{{title}}</h1>
+
+    {{register_form.errors}}
+
+    <form method = "POST" action = ""> 
+         {% csrf_token %}
+
+        <label for="username"> Nombre del usuario: </label>
+        <input type ="text" name="username" />
+
+        <label for="password"> Contraseña: </label>
+        <input type ="password" name="password" />
+       
+        <input class = "" type = "submit" value ="Iniciar Sesión"/>
+        
+    </form>
+
+    <a href="{% url 'register' %}"><button class="button-crear" type = "submit" value ="Registrarse">Registrarse</button></a>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    {% if messages %}
+    {% for message in messages %}
+
+        <div>
+           <script>
+            Swal.fire({
+                "title" : "Error",
+                "text" : "{{message}}",
+                "icon" : "error"
+            })
+           </script>
+        </div>
+    {% endfor %}
+{% endif%}
+    </div>
+</body>
+{% endblock %}
