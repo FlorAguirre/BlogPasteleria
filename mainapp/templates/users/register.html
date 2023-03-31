@@ -52,13 +52,13 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     {% if messages %}
-    {% for message in messages %}
+    {% for m in messages %}
 
         <div>
            <script>
             Swal.fire({
                 "title" : "Registro Exitoso",
-                "text" : "{{message}}",
+                "text" : "{{m}}",
                 "icon" : "success"
             })
            </script>

@@ -276,7 +276,16 @@ def modificar_articulo(request, id):
         formulario = ArtForm(data = request.POST, instance = articulo, files = request.FILES)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "La receta ha sido modificada")
             return redirect('list_articles')
         
         data['form'] = formulario
     return render(request, 'articles/modificar.html', data)
+
+
+def eliminar_articulo(request, id):
+    articulo = get_object_or_404(Article, id = id)
+    articulo.delete()
+    messages.success(request, "La receta ha sido eliminada")
+    return redirect('list_articles')
+

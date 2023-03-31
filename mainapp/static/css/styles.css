@@ -206,13 +206,13 @@ nav > ul > li:hover > ul > li:hover a{
  
 }
 
-.message{
+/* .message{
   padding: 20px;
   background:#1f7e58;
   color:white;
   text-align: center;
   margin-bottom: 10px;
-}
+} */
 
 .button-crear{
   height:50px;

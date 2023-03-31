@@ -238,10 +238,14 @@
 
             {% endblock %}
         </div>
+
+
+
+
     </div>
 
 
-
+ 
 
 
     
@@ -262,8 +266,22 @@
         </ul>
       </footer>
     </div> {% endcomment %}
-
+ <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    {% if messages %}
+    {% for m in messages %}
+    <script>
+        Swal.fire({
+           "title" : "Operación Exitosa",
+           "text" : "{{m}}",
+           "icon" :"success"
+        })
+      </script>
+    {% endfor %}
+    {% endif %}   
     <script src =" {% static 'js/bootstrap.js.css' %}"></script>
+
+
+
 </body>
 
 </html>
