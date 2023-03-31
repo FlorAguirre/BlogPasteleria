@@ -1,5 +1,6 @@
 *{
   text-decoration: none !important;
+  list-style: none;
 
 }
 .form-control-dark {
@@ -281,4 +282,39 @@ background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
 background-repeat: no-repeat;
 
 
+}
+
+.height{
+  height: 1000px;
+}
+
+.form-register{
+  margin-left: 50%;
+  margin-right: 50%;
+
+  align-items: center;
+}
+
+.label{
+  padding: 10px;
+}
+
+.modal-sheet .modal-dialog {
+  width: 380px;
+  transition: bottom .75s ease-in-out;
+}
+.modal-sheet .modal-footer {
+  padding-bottom: 2rem;
+}
+
+.modal-alert .modal-dialog {
+  width: 380px;
+}
+
+.modal-tour .modal-dialog {
+  width: 380px;
+}
+
+.bg-color{
+  background-color: #5555;
 }
