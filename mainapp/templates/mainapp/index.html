@@ -1,0 +1,23 @@
+{% extends 'layouts/layout.html'%}
+
+
+
+{%block title %} {{title}} {% endblock %}
+
+
+{%block content %}
+    <body class="body-back">
+    <h1 class="title-index">{{title}}</h1>
+    <div class= "botones">
+        <div>
+        <a class= "a-crear" href="{% url 'create_full' %}"><button class="button-crear"> Crear Receta </button> </a>
+        <a class= "a-crear" href="{% url 'create_category' %}"><button class="button-crear"> Crear Categoría  </button></a>
+        <a class= "a-crear" href="{% url 'create_product' %}"><button class="button-crear"> Crear Producto  </button></a>
+        </div>
+        <br>
+
+        <a class= "a-crear" href="{% url 'buscar_articulo' %}"><button class="button-buscar"> Buscar Receta </button></a>
+        <a class= "a-crear" href="{% url 'buscar_producto' %}"><button class="button-buscar"> Buscar Producto </button></a>
+    </div>
+</body>
+{% endblock %}

@@ -1,0 +1,25 @@
+
+{% for category in categories%}
+<article class = "article-item">
+
+
+    <div class = "data">
+       
+        <p>
+            
+            {% if category.id %}
+            <a href="{% url 'category' category.id %}">{{ category.name}}</a>
+        {% endif %}
+              
+        </p>
+        <span class="date">
+            
+            {{article.created_at}}
+        </span>
+
+        
+    </div>
+    <div class= "clearfix"></div>
+</article>
+<hr>
+{% endfor %}

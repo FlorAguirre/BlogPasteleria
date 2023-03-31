@@ -1,0 +1,26 @@
+{% for product in products%}
+<article class = "article-item">
+
+
+    <div class = "data">
+       
+        <p>
+            
+            {% if product.id %}
+            <a href="{% url 'product' product.id %}">Nombre del Producto: {{ product.name}} </a>
+            <p>Precio: $  {{ product.price}}</p>
+
+        {% endif %}
+              
+        </p>
+        <span class="date">
+            
+            {{article.created_at}}
+        </span>
+
+        
+    </div>
+    <div class= "clearfix"></div>
+</article>
+<hr>
+{% endfor %}

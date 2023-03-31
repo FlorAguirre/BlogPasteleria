@@ -1,0 +1,170 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        <!-- Titulo de cada pagina -->
+        {% endblock %}
+    </title>
+
+  
+    <link rel="stylesheet" href=" {% static 'css/bootstrap.min.css' %}" />
+    
+  
+    <link rel="stylesheet" href=" {% static 'css/styles.css' %}" />
+
+</head>
+
+<body>
+
+    <!-- Cabecera de la pagina -->
+    {% comment %} <header>
+        <div id="logotipo">
+            <!-- Logo Django -->
+            <img src="{% static 'images/logo.png'%}">
+            <h1>Blog de Recetas</h1>
+        </div>
+
+    </header> {% endcomment %}
+{% comment %} 
+    <nav class="navbar navbar-expand-lg  bg-dark ">
+        <div class="container-fluid">
+          <a class="navbar-brand text-light" href="#">Spazio Dolce</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active text-light" aria-current="page" href="{% url 'index' %}">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="{% url 'about' %}">Sobre nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="#">Recetas</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav> {% endcomment %}
+
+      <header class="p-2 text-bg-dark">
+                 
+        <div class="container">
+   
+          <div class="d-flex flex-wrap align-items-center justify-content-start ">
+             
+      <a href="/" class=" text-light text-decoration-none ">
+              <img class="logo" src="{% static 'images/Logo2.png' %}">
+            </a> 
+ <nav>  
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-start mb-md-0">
+              <li><a href="{% url 'index' %}" class="nav-link px-2 text-light">Inicio</a></li>
+              <li><a href="{% url 'list_categorias' %}" class="nav-link px-2 text-light">Categorías</a></li>
+              <li><a href="{% url 'list_articles' %}" class="nav-link px-2 text-light">Recetas</a></li>
+              <li><a href="{% url 'list_productos' %}" class="nav-link px-2 text-light">Productos</a></li>
+
+              {% comment %} <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle categ" href="{% url 'list_articles' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                 Categorías
+                </a>
+                <ul class="dropdown-menu">
+                  {% for category in categories %}
+                  {% if category.id %}
+                      <a href="{% url 'category' category.id %}">{{ category.name}}</a>
+                  {% endif %}
+                  {% endfor %}
+                </ul>
+              </li> {% endcomment %}
+          {% comment %} <li>
+                <a href="{% url 'list_articles' %}" class="nav-link px-2 text-light">Categorías</a>
+                <ul>
+                  <li>
+                    <a href="{% url 'index' %}" class="nav-link px-2 text-light">Categoría 1</a>
+                    <a href="{% url 'index' %}" class="nav-link px-2 text-light">Categoría 2</a>
+                    <a href="{% url 'index' %}" class="nav-link px-2 text-light">Categoría 3</a>
+                  </li>
+                </ul>
+              </li>  {% endcomment %}
+
+              {% for page in pages %}
+              <li><a href="{% url 'page' page.2 %}" class="nav-link px-2 text-white">{{page.1}}</a></li>
+              {% endfor %}
+
+            
+            </ul>
+          </nav> 
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 boton-search" role="search">
+              <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+             
+                 <button type="button" class="btn btn-outline-light me-2 boton">Buscar</button>
+             
+            </form>
+ 
+            {% comment %} <div class="text-end">
+                <button type="button" class="btn btn-outline-light me-2">Iniciar Sesión</button>
+                <button type="button" class="btn btn-warning">Registrarse</button>
+                
+            </div> {% endcomment %}
+          
+          </div>  
+     
+        </div>
+   
+      </header> 
+{% comment %}       
+    <div class="barra">
+        <span class="esquina-izquierda"></span>
+        <span class="relleno-barra"></span>
+        <span class="esquina-derecha"></span>
+    </div> {% endcomment %}
+
+    <div id="content">
+        <div class="box">
+
+            {% block content %}
+            <!--Codigo que viene de templates-->
+            <strong> Contenido del bloque original </strong>
+
+            {% endblock %}
+        </div>
+    </div>
+
+
+
+
+
+    
+
+    </div>
+        {% comment %} <div class="container">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <p class="col-md-4 mb-0 text-muted">&copy; Spazio Dolce, Inc</p>
+    
+  
+    
+        <ul class="nav col-md-5 justify-content-end">
+          <li><a href="#" class="nav-link px-2 text-muted">Inicio</a></li>
+          <li><a href="#" class="nav-link px-2 text-muted">Recetas</a></li>
+          <li><a href="#" class="nav-link px-2 text-muted">Productos</a></li>
+          <li><a href="#" class="nav-link px-2 text-muted">Sobre Nosotros</a></li>
+          <li><a href="#" class="nav-link px-2 text-muted">Contáctanos</a></li>
+        </ul>
+      </footer>
+    </div> {% endcomment %}
+
+    <script src =" {% static 'js/bootstrap.js.css' %}"></script>
+</body>
+
+</html>

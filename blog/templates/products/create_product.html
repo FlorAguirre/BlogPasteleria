@@ -1,0 +1,24 @@
+{% extends 'layouts/layout.html'%}
+
+
+{%block title %} Crear Producto {% endblock %}
+
+
+{%block content %}
+<body class= "body-back-crearCat">
+    <h1 class ="title">Crear Producto</h1>
+
+<br>
+<br>
+<form action = "" method="POST">
+     {% csrf_token %} 
+
+     {{form}}
+
+     <input type="submit" value ="Guardar">
+      
+    
+    </form>
+</body>
+{% endblock %}
+

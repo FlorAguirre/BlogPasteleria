@@ -1,0 +1,284 @@
+*{
+  text-decoration: none !important;
+
+}
+.form-control-dark {
+    border-color: var(--bs-gray);
+  }
+  .form-control-dark:focus {
+    border-color: #fff;
+    box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
+  }
+  
+  .text-small {
+    font-size: 85%;
+  }
+  
+  .dropdown-toggle {
+    outline: 0;
+  }
+  
+
+#content{
+  height: 750px;
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-top: 30px;
+  text-align: justify;
+}
+
+
+.logo{
+
+  height: 100px;
+}
+
+.title{
+  color:#444;
+  letter-spacing: 1px;
+  font-size: 30px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  font-size: 2.1rem;
+}
+
+.date{
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color:grey;
+}
+
+
+.content{
+  line-height: 25px;
+}
+
+img{
+  height: 300px;
+  width: 300px;
+}
+
+ nav > ul > li > ul {
+  display:none;
+  position: absolute;
+  color:black ;
+  text-align: left;
+  width: 160px;
+  box-shadow: 0px 2px 2px rgb(58, 57, 57) ;
+} 
+
+nav > ul > li:hover > ul{
+  display:block;
+  color:black ;
+  margin: 0px;
+  list-style: none;
+
+}
+
+nav > ul > li:hover > ul > li{
+  background: #F2F1F0;
+  border-bottom: 1px solid #d6d6d6;
+  padding: 8px;
+  line-height: 25px;
+  font-size: 13px;
+} 
+
+nav > ul > li:hover > ul > li a{
+ color:#666 ;
+} 
+
+nav > ul > li:hover > ul > li:hover{
+  background-color: #1f7e58 ;
+ } 
+
+ 
+nav > ul > li:hover > ul > li:hover a{
+  display: block;
+  color:white ;
+ } 
+
+
+.categ{
+  color:white;
+}
+
+.boton-search{
+  display: flex;
+  flex-direction: row;
+  gap:20px;
+  height: 50px;
+  width: 350px;
+  margin-left: 20px;
+}
+
+.boton{
+  height: 50px;
+  width: 150px;
+}
+
+/* 
+ ul li a{
+  display: block;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  color: #d1d4d6;
+  height: 50px;
+}
+
+
+
+ ul li a:hover{
+  background-color:#2ba977;
+  box-shadow: 0px 00px 30px black inset;
+  color: white;
+  transition: all 300ms;
+} */
+
+.box a {
+    color: #444;
+}
+
+.box a:hover {
+  color: #1f7e58;
+}
+
+.box .image{
+    
+    float:left;
+    margin-right: 40px;
+}
+
+.box .image img{
+  width:100%;
+  
+}
+
+.box form{
+  width: 35%;
+}
+
+.box form input,
+.box form label{
+  display:block;
+  padding:5px;
+  padding-left: 0px;
+}
+
+.box form input[type="text"],
+.box form textarea{
+  width:90%;
+  margin-bottom: 10px;
+
+} 
+
+.box form input[type="text"],
+.box form textarea,
+.box select{
+  width:100%;
+  margin-bottom: 10px;
+
+} 
+
+.box select{
+  width:150px;
+  padding: 5px;
+}
+
+.box form input[type="submit"],
+.box form input[type="button"],
+.box form button{
+  padding:10px;
+  margin-top:5px;
+  background-color: #2ba977;
+  color: white;
+  font-weight: bold;
+  border:1px solid black;
+  transition: 300ms all;
+}
+
+.box form input[type="submit"]:hover,
+.box form input[type="button"]:hover,
+.box form button:hover{
+  cursor:pointer;
+  background: #1f7e58;
+ 
+}
+
+.message{
+  padding: 20px;
+  background:#1f7e58;
+  color:white;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.button-crear{
+  height:50px;
+  background-color: #2ba977; 
+  margin-left: 15px;
+  color:white;
+  font-weight: bold;
+  
+}
+
+.a-crear{
+  color:white !important;
+  font-weight: bold;
+  
+}
+
+.botones{
+  
+  
+  margin-top: 40px;
+}
+
+
+.button-buscar{
+  height:50px;
+  background-color: #2876cf; 
+  margin-left: 15px;
+  color:white;
+  font-weight: bold;
+  
+}
+
+.body-back{
+  background-image: url(../images/MM-262.jpg) ;
+  background-size: cover;
+}
+
+
+.title-index{
+  color:white;
+}
+
+.body-back-crearArt{
+  background-image: url(../../../media/articles/textura-08.jpg) ;
+  background-size: cover;
+}
+
+.body-back-crearCat{
+  background-image: url(../../../media/articles/textura-08.jpg) ;
+  background-size: cover;
+}
+
+.body-list{
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  background-size: cover;
+}
+
+.body-list-cat{
+  background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
+
+}
+
+.body-list-prod{
+height:1500px;
+background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+background-repeat: no-repeat;
+
+
+}

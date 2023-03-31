@@ -1,0 +1,22 @@
+{% extends 'layouts/layout.html'%}
+
+
+{%block title %} {{title}} {% endblock %}
+
+
+{%block content %}
+<body class="body-list-prod">
+    <h1 class ="title">{{title}}</h1>
+    {%if messages %}
+        {%for message in messages%}
+        <div class="message">
+            {{message}}
+        </div>
+        {% endfor %}
+    {% endif%}
+
+ 
+ 
+    {% include 'products/products.html' %}
+    </body>
+{% endblock %}

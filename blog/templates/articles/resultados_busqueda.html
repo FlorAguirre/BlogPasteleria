@@ -1,0 +1,26 @@
+
+{% extends 'layouts/layout.html'%}
+
+
+
+{%block title %}  Resultados de Busqueda {% endblock %}
+
+
+{%block content %}
+
+
+<h1> Estamos buscando la receta :{{title}} </h1> 
+{% if articulos %}
+
+<ul> 
+    {% for articulo in articulos%}
+        <li> Título: {{articulo.title}} </li>
+        <li> Contenido: {{articulo.content}} </li>
+<hr>
+    {% endfor %}
+
+
+</ul>
+
+{% endif %}
+{% endblock %}
