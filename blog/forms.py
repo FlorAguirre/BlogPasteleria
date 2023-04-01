@@ -34,6 +34,7 @@ class ArtForm(forms.ModelForm):
             'content',
             'public',
             'categories',
+            'image',
         )
 
 

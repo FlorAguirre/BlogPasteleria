@@ -24,6 +24,7 @@ class Article(models.Model):
     image = models.ImageField(default = 'null', verbose_name='Imagen',upload_to="articles")
     public = models.BooleanField(verbose_name='Publicado?')
     #user = models.ForeignKey(User, editable = False, verbose_name= 'Usuario', on_delete = models.CASCADE) # Se borra el registro que esta vinculado con el usuario - on_delete = models.CASCADE
+    author = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True)
     categories = models.ManyToManyField(Category, verbose_name='Categorías', blank= True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Creado el')
     updated_at = models.DateTimeField(auto_now= True, verbose_name='Editado el')

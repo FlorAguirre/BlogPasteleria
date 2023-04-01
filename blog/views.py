@@ -139,6 +139,7 @@ def create_full_article(request):
                 content = content,
                 public = public,
                 image = image,
+                author =request.user
             )
             articulo.save()
             articulo.categories.set(categories)
@@ -277,6 +278,12 @@ def modificar_articulo(request, id):
         'form' : ArtForm(instance= articulo)
     }
 
+     # Verificar si el usuario actual es el autor del artículo
+    if request.user != articulo.author:
+        # Si el usuario actual no es el autor del artículo, redirigir a la página de inicio
+        messages.error(request, 'Solo el autor del artículo puede editarlo o eliminarlo')
+        return redirect('inicio')
+
     if request.method == 'POST':
         formulario = ArtForm(data = request.POST, instance = articulo, files = request.FILES)
         if formulario.is_valid():
@@ -295,8 +302,12 @@ def modificar_articulo(request, id):
 #     return redirect('list_articles')
 
 def eliminar_articulo(request, id):
-    if not request.user.is_staff:
-        return HttpResponseForbidden('Acceso denegado')
+    articulo = get_object_or_404(Article, id = id)
+     # Verificar si el usuario actual es el autor del artículo
+    if request.user != articulo.author:
+        # Si el usuario actual no es el autor del artículo, redirigir a la página de inicio
+        messages.error(request, 'Solo el autor del artículo puede editarlo o eliminarlo')
+        return redirect('inicio')
     
     articulo = get_object_or_404(Article, id=id)
     articulo.delete()
