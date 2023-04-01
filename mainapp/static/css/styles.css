@@ -320,6 +320,7 @@ background-repeat: no-repeat;
   justify-content: right;
   margin-right: 10px;
   margin-top: 10px;
+  font-weight: bold;
 
 }
 .input-login{
@@ -328,6 +329,7 @@ background-repeat: no-repeat;
   border-radius: var(--bs-border-radius-lg)!important;
   color: #fff;
   background-color: #0d6efd;
+  font-weight: bold;
 
 }
 
