@@ -25,15 +25,15 @@
 
 {%block content %}
     <body class="">
-    
-
-
+    <div class= "login-input">
+      <input class = "input-login" type = "submit" value ="Iniciar Sesión"/>
+    </div>
     <form method = "POST" action = "" class=" "> 
          {% csrf_token %}
 
          {% comment %} {{register_form.as_p}} {% endcomment %}
         <div class="form-register " >
-          <div class="modal-header p-3 pb-4 border-bottom-0">
+          <div class="modal-header p-2 pb-1 border-bottom-0">
             <h1 class="modal-title fs-2" >Registrarse</h1> 
             
             
@@ -48,7 +48,7 @@
          <div class="register-errors"> {{register_form.errors}}</div>
          <br>
          
-       <input  onClick="irALogin()" class = "input-register" type = "submit" value ="Registrarse"/>
+       <input class = "input-register" type = "submit" value ="Registrarse"/>
       </div>
       
     </form>
