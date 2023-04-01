@@ -23,54 +23,53 @@
 </head>
 
 
-
-
-
-
-
 {%block content %}
     <body class="">
-    <h1 class="">{{title}}</h1>
+    
 
-    {{register_form.errors}}
 
-    <form method = "POST" action = "" class="row g-3 modal-content rounded-4 shadow"> 
+    <form method = "POST" action = "" class=" "> 
          {% csrf_token %}
 
          {% comment %} {{register_form.as_p}} {% endcomment %}
         <div class="form-register " >
+          <div class="modal-header p-3 pb-4 border-bottom-0">
+            <h1 class="modal-title fs-2" >Registrarse</h1> 
+            
+            
+          </div>
          {% for field in register_form %}
  
             <label class="label-register">{{field.label}}</label>
             {{field}}
-      
+  
          {% endfor%}
 
-  
+         <div class="register-errors"> {{register_form.errors}}</div>
          <br>
          
-        <input class = "input-register" type = "submit" value ="Registrarse"/>
+       <input  onClick="irALogin()" class = "input-register" type = "submit" value ="Registrarse"/>
       </div>
-     
+      
     </form>
 
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-    {% if messages %}
+   {% if messages %}
     {% for m in messages %}
-
         <div>
-           <script>
-            Swal.fire({
-                "title" : "Registro Exitoso",
-                "text" : "{{m}}",
-                "icon" : "success"
-            })
-           </script>
+            <script>
+                Swal.fire({
+                    title: 'Registro Exitoso',
+                    text: '{{m}}',
+                    icon: 'success',
+                })
+            </script>
         </div>
     {% endfor %}
-{% endif%}
+    {% endif %} 
+    
 
 </body>
 {% endblock %}

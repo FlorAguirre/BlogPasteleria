@@ -35,8 +35,8 @@ def register_page(request):
             register_form.save()
             messages.success(request, "Se ha registrado correctamente")
 
-        return redirect('register')
-        
+            return redirect('register')
+    
 
     return render(request,'users/register.html',{
         'title' : 'Registro',

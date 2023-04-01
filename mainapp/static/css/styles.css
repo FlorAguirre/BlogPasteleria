@@ -291,7 +291,7 @@ background-repeat: no-repeat;
 
 .form-register{
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -351,4 +351,8 @@ ul li a.active{
   color:white;
   padding:10px;
  
+}
+.register-errors{
+  margin-top: 20px;
+  background-color: #d57eeb;
 }
