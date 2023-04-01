@@ -3,7 +3,9 @@ from blog.models import Category, Article, Product
 from django.shortcuts import render,HttpResponse, redirect
 from blog.forms import ArtForm, CatForm, ProdForm
 from django.contrib import messages
-
+from django.contrib.auth.decorators import user_passes_test
+from mainapp.views import is_active,is_staff
+from django.contrib.auth.decorators import login_required, permission_required
 
 
 
@@ -115,11 +117,12 @@ def save_article(request):
 #     return render(request,'articles/create_article.html')
 
 # #######  CREAR RECETA, CATEGORIA Y PRODUCTO #######
+@login_required
 
 def create_full_article(request):
     articulo = None # Crear la variable articulo fuera del bloque condicional
     if request.method == "POST":
-        formulario = ArtForm(request.POST)
+        formulario = ArtForm(request.POST,request.FILES)
         if formulario.is_valid():
             # Extraer los campos del formulario
             title = formulario.cleaned_data.get('title')
@@ -127,7 +130,7 @@ def create_full_article(request):
             public = formulario.cleaned_data.get('public')
             category_ids = request.POST.getlist('categories') # obtener la lista de los ids de categorías seleccionadas
             categories = Category.objects.filter(id__in=category_ids)
-
+            image = formulario.cleaned_data.get('image')
   
 
             # Crear el articulo
@@ -135,7 +138,7 @@ def create_full_article(request):
                 title = title,
                 content = content,
                 public = public,
-                
+                image = image,
             )
             articulo.save()
             articulo.categories.set(categories)
@@ -263,6 +266,8 @@ def buscar_p(request):
 
     return HttpResponse(respuesta)
     
+
+@login_required
 
 def modificar_articulo(request, id):
 

@@ -25,6 +25,7 @@ class FormArticle(forms.Form):
 
 
 class ArtForm(forms.ModelForm):
+    image = forms.ImageField(required=False)
 
     class Meta:
         model= Article

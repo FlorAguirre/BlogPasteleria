@@ -7,15 +7,6 @@
 {%block content %}
 <body class="body-list-cat">
     <h1 class ="title">{{title}}</h1>
-    {%if messages %}
-        {%for message in messages%}
-        <div class="message">
-            {{message}}
-        </div>
-        {% endfor %}
-    {% endif%}
-
- 
  
     {% include 'categories/categories.html' %}
     </body>

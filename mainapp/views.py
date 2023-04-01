@@ -14,8 +14,23 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import login_required, permission_required
+from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 
 # Create your views here.
+
+
+from django.contrib.auth.decorators import user_passes_test
+
+def is_active(user):
+    return user.is_active
+
+def is_staff(user):
+    return user.is_staff
+
+
+
 
 
 @login_required(login_url = 'login')
@@ -109,3 +124,16 @@ def editarPerfil(request):
 def user_list(request):
     users = User.objects.all()
     return render(request, 'users/user_list.html', {'users': users})
+
+@login_required
+@permission_required('auth.change_user', raise_exception=True)
+def edit_user_permissions(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+    if request.method == 'POST':
+        form = UserChangeForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('user_list')
+    else:
+        form = UserChangeForm(instance=user)
+    return render(request, 'users/edit_user_permissions.html', {'form': form, 'user': user})

@@ -2,6 +2,10 @@
 
 {% load static %}
 
+{% block title %}
+Listado de Usuarios
+{% endblock %}
+
 {% block content %}
     <h2>Usuarios</h2>
     <table class="table table-striped table-flex">
@@ -13,6 +17,9 @@
               <th scope="col">Nombre</th>
               <th scope="col">Apellido</th>
               <th scope="col">Email</th>
+              <th scope="col">Staff Estado</th>
+              <th scope="col">Superusuario Estado</th>
+              <th scope="col">Actions</th>
               <th scope="col">Opciones</th>
             </tr>
           </thead>
@@ -24,6 +31,9 @@
                     <td>{{ user.first_name }}</td>
                     <td>{{ user.last_name }}</td>
                     <td>{{ user.email }}</td>
+                    <td>{% if user.is_staff %}Si{% else %}No{% endif %}</td>
+                    <td>{% if user.is_superuser %}Si{% else %}No{% endif %}</td>
+                    <td><a href="{% url 'edit_user_permissions' user.id %}">Editar Permisos</a></td>
                     <td> <a href=""> <svg xmlns="http://www.w3.org/2000/svg"
                         class="icon icon-tabler icon-tabler-edit" width="22" height="22" viewBox="0 0 24 24" stroke-width="2"
                         stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
