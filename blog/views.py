@@ -279,7 +279,7 @@ def modificar_articulo(request, id):
     }
 
      # Verificar si el usuario actual es el autor del artículo
-    if request.user != articulo.author:
+    if request.user != articulo.author and not request.user.is_superuser:
         # Si el usuario actual no es el autor del artículo, redirigir a la página de inicio
         messages.error(request, 'Solo el autor del artículo puede editarlo o eliminarlo')
         return redirect('inicio')
@@ -304,7 +304,7 @@ def modificar_articulo(request, id):
 def eliminar_articulo(request, id):
     articulo = get_object_or_404(Article, id = id)
      # Verificar si el usuario actual es el autor del artículo
-    if request.user != articulo.author:
+    if request.user != articulo.author  and not request.user.is_superuser:
         # Si el usuario actual no es el autor del artículo, redirigir a la página de inicio
         messages.error(request, 'Solo el autor del artículo puede editarlo o eliminarlo')
         return redirect('inicio')
