@@ -8,6 +8,13 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.hashers import make_password
+from django.views.generic import ListView
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+from django.contrib.auth.models import User
+from django.shortcuts import render
+from django.contrib.auth.decorators import user_passes_test
+
 # Create your views here.
 
 
@@ -93,3 +100,12 @@ def editarPerfil(request):
         miFormulario.fields['last_name'].initial = usuario.last_name
         miFormulario.fields['first_name'].initial = usuario.first_name
     return render(request, "users/editarPerfil.html", {"miFormulario": miFormulario, "usuario": usuario})
+
+
+
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def user_list(request):
+    users = User.objects.all()
+    return render(request, 'users/user_list.html', {'users': users})

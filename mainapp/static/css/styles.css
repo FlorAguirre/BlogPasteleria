@@ -375,3 +375,8 @@ ul li a.active{
   margin-top: 20px;
   background-color: #d57eeb;
 }
+
+.table-flex{
+  padding:30px !important;
+  margin: 40px;
+}
