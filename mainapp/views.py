@@ -36,6 +36,7 @@ def register_page(request):
             messages.success(request, "Se ha registrado correctamente")
 
         return redirect('register')
+        
 
     return render(request,'users/register.html',{
         'title' : 'Registro',
@@ -81,7 +82,7 @@ def editarPerfil(request):
             usuario.last_name = informacion['last_name']
             usuario.first_name = informacion['first_name']
             usuario.save()
-            messages.success(request, "Se ha")
+            messages.success(request, "Se ha modificado el usuario correctamente")
             return render(request, "mainapp/index.html")
     else:
            # Obtener el objeto User actual y pasarlo como instancia del formulario
