@@ -17,4 +17,6 @@
     <p class = "content">
         {{article.content| safe}}
     </p>
+
+    <a href="{% url 'list_articles' %}"><button>Volver</button></a>
 {% endblock %}

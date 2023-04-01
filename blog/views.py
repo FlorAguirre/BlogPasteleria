@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import user_passes_test
 from mainapp.views import is_active,is_staff
 from django.contrib.auth.decorators import login_required, permission_required
-
+from django.http import HttpResponseForbidden
 
 
 
@@ -287,10 +287,18 @@ def modificar_articulo(request, id):
         data['form'] = formulario
     return render(request, 'articles/modificar.html', data)
 
+# @user_passes_test(is_staff)
+# def eliminar_articulo(request, id):
+#     articulo = get_object_or_404(Article, id = id)
+#     articulo.delete()
+#     messages.success(request, "La receta ha sido eliminada")
+#     return redirect('list_articles')
 
 def eliminar_articulo(request, id):
-    articulo = get_object_or_404(Article, id = id)
+    if not request.user.is_staff:
+        return HttpResponseForbidden('Acceso denegado')
+    
+    articulo = get_object_or_404(Article, id=id)
     articulo.delete()
     messages.success(request, "La receta ha sido eliminada")
     return redirect('list_articles')
-
