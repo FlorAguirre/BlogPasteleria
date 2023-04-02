@@ -23,13 +23,15 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     {% if messages %}
     {% for m in messages %}
-    <script>
-        Swal.fire({
+        
+   <script>
+       Swal.fire({
            "title" : "Acceso denegado",
            "text" : "{{m}}",
            "icon" :"error"
-        })
-      </script>
+        }) 
+    
+    </script>
     {% endfor %}
     {% endif %}  
 

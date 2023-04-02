@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from blog.models import Category, Article, Product
+from blog.models import Category, Article, Product, Like
 from django.shortcuts import render,HttpResponse, redirect
 from blog.forms import ArtForm, CatForm, ProdForm
 from django.contrib import messages
@@ -60,11 +60,22 @@ def article(request, article_id):
 
     article = get_object_or_404(Article, id =article_id)
     return render(request, 'articles/detail.html',{
-        'article' : article
+        'article' : article,
+        
    })
 
 
-
+def like_article(request, article_id):
+    article = get_object_or_404(Article, id=article_id)
+    user = request.user
+    try:
+        # Si el usuario ya dio like a este artículo, eliminar su like
+        like = Like.objects.get(article=article, author=user)
+        like.delete()
+    except Like.DoesNotExist:
+        # Si el usuario no ha dado like todavía, crear uno nuevo
+        like = Like.objects.create(article=article, author=user)
+    return HttpResponseRedirect(reverse('article', args=[article.id]))
 
 
 def product(request, product_id):

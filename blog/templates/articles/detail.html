@@ -18,6 +18,13 @@
         {{article.content| safe}}
     </p>
 
+
+    <p>{{ likes_count }} Likes</p>
+    <form action="{% url 'like_article' article.id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Like</button>
+    </form>
+
     <br/><br/>
     <a href="{% url 'crear_comentario' article.id %}"><h4>Agregar un comentario...</h4></a>
 

@@ -28,6 +28,7 @@ class Article(models.Model):
     categories = models.ManyToManyField(Category, verbose_name='Categorías', blank= True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Creado el')
     updated_at = models.DateTimeField(auto_now= True, verbose_name='Editado el')
+    likes_count = models.PositiveIntegerField(default=0)
 
     class Meta:
         verbose_name = 'Artículo'

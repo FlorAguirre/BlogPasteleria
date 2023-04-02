@@ -105,7 +105,7 @@ def editarPerfil(request):
             usuario.first_name = informacion['first_name']
             usuario.save()
             messages.success(request, "Se ha modificado el usuario correctamente")
-            return render(request, "mainapp/index.html")
+            return render(request, "users/perfil.html")
     else:
            # Obtener el objeto User actual y pasarlo como instancia del formulario
         miFormulario = UserEditForm(instance=usuario)
@@ -137,3 +137,9 @@ def edit_user_permissions(request, user_id):
     else:
         form = UserChangeForm(instance=user)
     return render(request, 'users/edit_user_permissions.html', {'form': form, 'user': user})
+
+
+def perfil(request, user_id):
+    user = get_object_or_404(User, id =user_id)
+    return render(request, 'users/perfil.html',{
+        'user' : user,})
