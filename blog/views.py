@@ -7,7 +7,9 @@ from django.contrib.auth.decorators import user_passes_test
 from mainapp.views import is_active,is_staff
 from django.contrib.auth.decorators import login_required, permission_required
 from django.http import HttpResponseForbidden
-
+from blog.forms import CommentForm
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 
 # Create your views here.
@@ -57,10 +59,12 @@ def category(request, category_id):
 def article(request, article_id):
 
     article = get_object_or_404(Article, id =article_id)
-
     return render(request, 'articles/detail.html',{
         'article' : article
-    })
+   })
+
+
+
 
 
 def product(request, product_id):
@@ -313,3 +317,54 @@ def eliminar_articulo(request, id):
     articulo.delete()
     messages.success(request, "La receta ha sido eliminada")
     return redirect('list_articles')
+
+
+
+# Agregar comentarios
+
+@login_required
+def add_comment(request, article_id):
+    article = Article.objects.get(id=article_id)
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.article = article
+            comment.author = request.user
+            comment.save()
+            messages.success(request, 'Tu comentario ha sido agregado')
+            return redirect('article', article_id=article_id)
+    else:
+        form = CommentForm()
+
+    context = {
+        'article': article,
+        'form': form
+    }
+
+    return render(request, 'articles/detail.html', context)
+
+
+def crear_comentario(request, article_id):
+    article = Article.objects.get(id=article_id)
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.article = article
+            comment.author = request.user
+            comment.save()
+            messages.success(request, 'Tu comentario ha sido agregado')
+            return redirect('article', article_id=article_id)
+    else:
+        form = CommentForm()
+
+    context = {
+        'article': article,
+        'form': form
+    }
+
+    return render(request, 'articles/agregar_comentario.html', context)
+

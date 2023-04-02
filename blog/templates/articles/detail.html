@@ -13,10 +13,33 @@
 
 {% endif%}
     <h1 class ="title">{{article.title}}</h1>
-    <span class = "date">{{article.create_at}}</span>
+    <span class = "date">{{article.created_at}}</span>
     <p class = "content">
         {{article.content| safe}}
     </p>
+
+    <br/><br/>
+    <a href="{% url 'crear_comentario' article.id %}"><h4>Agregar un comentario...</h4></a>
+
+    <br/><br/>
+
+    {% comment %} <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Enviar comentario</button>
+    </form> {% endcomment %}
+  
+    <!-- Mostrar los comentarios existentes -->
+    <h2>Comentarios:</h2>
+    {% for comment in article.comments.all %}
+      <strong><p>{{ comment.author }} | {{ comment.created_on }} </strong> 
+     
+      <p>{{ comment.content }}</p>
+      
+      <hr>
+    {% empty %}
+      <p>No hay comentarios aún.</p>
+    {% endfor %}
 
     <a href="{% url 'list_articles' %}"><button>Volver</button></a>
 {% endblock %}

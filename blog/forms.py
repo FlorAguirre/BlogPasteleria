@@ -1,5 +1,6 @@
 from django import forms
-from .models import Article, Category, Product
+from .models import Article, Category, Product, Comment
+
 
 class FormArticle(forms.Form):
 
@@ -59,3 +60,11 @@ class ProdForm(forms.ModelForm):
             'price',
             
         )
+
+
+class CommentForm(forms.ModelForm):
+    content = forms.CharField(widget=forms.Textarea(attrs={'rows': 8, 'cols':100, 'placeholder': 'Ingresa tu comentario aquí'}))
+
+    class Meta:
+        model = Comment
+        fields = ('content',)
