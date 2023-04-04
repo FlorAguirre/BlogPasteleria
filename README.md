@@ -24,12 +24,23 @@ El blog esta dedicado a la creación de recetas como artículos, categorías y p
 
 2. En la página de Categorías (NavBar), se podrá encontrar el listado de las categorías existentes en la base de datos.
 
-3. En la página de Categorías Recetas (NavBar), se podrá encontrar el listado de las recetas existentes en la base de datos.
+3. En la página de Recetas (NavBar), se podrá encontrar el listado de las recetas existentes en la base de datos.
 
-4. En la página de Categorías Productos (NavBar), se podrá encontrar el listado de los productos existentes en la base de datos.
+4. En la página de Productos (NavBar), se podrá encontrar el listado de los productos existentes en la base de datos.
 
+5. 
 
-## Requisitos de la entrega:
+6.
+
+7.
+
+8.
+
+9.
+
+10. 
+
+## Requisitos de la pre-entrega:
 
 1. Link de GitHub con el proyecto totalmente subido a la plataforma: https://github.com/FlorAguirre/BlogRecetas
 
@@ -48,4 +59,5 @@ El blog esta dedicado a la creación de recetas como artículos, categorías y p
 5. Readme que indique el orden en el que se prueban las cosas y/o donde están las funcionalidades: Hecho.
 
 
+## Requisitos de la entrega final:
 

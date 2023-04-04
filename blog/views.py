@@ -10,6 +10,7 @@ from django.http import HttpResponseForbidden
 from blog.forms import CommentForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -19,11 +20,19 @@ from django.urls import reverse
 
 def articles(request):
 
+    # Sacar articulos
     articles = Article.objects.all()
+    # Paginar los articulos
+    paginator = Paginator(articles, 2)
+
+    # Recoger numero pagina
+    page = request.GET.get('page')
+    page_articles = paginator.get_page(page)
     
+
     return render(request,'articles/list.html',{
         'title' : 'Artículos',
-        'articles' : articles,
+        'articles' : page_articles,
     })
 
 
