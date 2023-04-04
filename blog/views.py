@@ -23,7 +23,7 @@ def articles(request):
     # Sacar articulos
     articles = Article.objects.all()
     # Paginar los articulos
-    paginator = Paginator(articles, 2)
+    paginator = Paginator(articles, 3)
 
     # Recoger numero pagina
     page = request.GET.get('page')
