@@ -48,10 +48,16 @@ def categories(request):
 def products(request):
 
     products = Product.objects.all()
+
+     # Paginar los articulos
+    paginator = Paginator(products, 3)
+
+    page = request.GET.get('page')
+    page_products = paginator.get_page(page)
     
     return render(request,'products/listproducts.html',{
         'title' : 'Productos',
-        'products' : products,
+        'products' : page_products,
     })
 
 def category(request, category_id):

@@ -1,0 +1,24 @@
+<div class = 'pagination'>
+
+    {% if products.has_previous %}
+        <a href="?page=1">&laquo; Primero - </a>
+        <a href="?page={{products.previous_page_number}}"> Anterior | </a>
+    {% endif %}
+
+
+    <span class="actual">
+        Página {{products.number}} de {{products.paginator.num_pages}}   |  </span>
+
+<br/>
+
+    {% if products.has_next %}
+    <a href="?page={{products.next_page_number}}"> 
+       Siguiente -   
+    </a>
+
+
+    <a href="?page={{products.paginator.num_pages}}">  Ultima &raquo;
+
+    </a>
+{% endif %}
+</div>
