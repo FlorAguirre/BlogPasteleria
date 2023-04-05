@@ -1,6 +1,13 @@
-{% for product in products%}
+{% for product in products %}
+
 <article class = "article-item">
 
+    {% if product.image != 'null' and product.image.url|length >= 1 %}
+        <div class="image">
+            <img src="{{product.image.url}}" />
+        </div>
+
+    {% endif %}
 
     <div class = "data">
        
@@ -10,7 +17,7 @@
             <a href="{% url 'product' product.id %}">Nombre del Producto: {{ product.name}} </a>
             <p>Precio: $  {{ product.price}}</p>
 
-        {% endif %}
+            {% endif %}
               
         </p>
         <span class="date">
@@ -20,6 +27,31 @@
 
         
     </div>
+
+    {% block js %}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    
+    <script>
+        
+        function eliminarArticulo(id){
+            Swal.fire({
+                "title": 'Estas seguro?',
+                "text": "No se podra revertir esta acción!",
+                "icon": 'warning',
+                "showCancelButton": true,
+                "cancelButtonText": 'No, Cancelar!',
+                "confirmButtonColor": '#3085d6',
+                "cancelButtonColor": '#d33',
+                "confirmButtonText": 'Si, Eliminar!'
+              }).then(function(result){
+                    if(result.isConfirmed){
+                        window.location.href = "/eliminar-articulo/"+id+"/"
+            }
+            })
+        }
+    
+    </script>
+    {% endblock %} 
     <div class= "clearfix"></div>
 </article>
 <hr>

@@ -1,8 +1,7 @@
 *{
   text-decoration: none !important;
   list-style: none;
-
-
+  
 }
 .form-control-dark {
     border-color: var(--bs-gray);
@@ -248,11 +247,30 @@ nav > ul > li:hover > ul > li:hover a{
   
 }
 
-.body-back{
-  background-image: url(../images/MM-262.jpg) ;
+
+
+.body-back {
+  background-color: rgba(0, 0, 0, .7);
+  background-image: url(../images/background2.png);  
+  
   background-size: cover;
+  background-repeat: no-repeat;
+ 
+  width: 100%;
+}  
+
+.white{
+  color:white;
+  font-weight: bold;
 }
 
+.cuadro{
+  display: flex;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-left: 90px;
+}
 
 .title-index{
   color:white;
@@ -279,7 +297,7 @@ nav > ul > li:hover > ul > li:hover a{
 }
 
 .body-list-prod{
-height:1500px;
+
 background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
 background-repeat: no-repeat;
 

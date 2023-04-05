@@ -34,7 +34,7 @@ class ArtForm(forms.ModelForm):
             'title',
             'content',
             'public',
-            'categories',
+            'categories', 
             'image',
         )
 
@@ -51,13 +51,14 @@ class CatForm(forms.ModelForm):
 
 
 class ProdForm(forms.ModelForm):
-
+    image = forms.ImageField(required=False)
     class Meta:
         model= Product
         fields = (
             'name',
             'description',
             'price',
+            'image',
             
         )
 

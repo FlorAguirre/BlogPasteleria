@@ -215,13 +215,13 @@ def create_category(request):
 def create_product(request):
     producto = None # Crear la variable articulo fuera del bloque condicional
     if request.method == "POST":
-        formulario = ProdForm(request.POST)
+        formulario = ProdForm(request.POST,request.FILES)
         if formulario.is_valid():
             # Extraer los campos del formulario
             name = formulario.cleaned_data.get('name')
             description = formulario.cleaned_data.get('description')
             price = formulario.cleaned_data.get('price')
-           
+            image = formulario.cleaned_data.get('image')
 
   
 
@@ -229,7 +229,8 @@ def create_product(request):
             producto = Product(
                 name = name,
                 description = description,
-                price = price
+                price = price,
+                image = image
               
                 
             )

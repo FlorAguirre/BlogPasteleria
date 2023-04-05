@@ -7,7 +7,9 @@
 
 {%block content %}
     <body class="body-back">
-    <h1 class="title-index">{{title}}</h1>
+       
+        <section class="hero">
+    {% comment %} <h1 class="title-index">{{title}}</h1>
     <div class= "botones">
         <div>
         <a class= "a-crear" href="{% url 'create_full' %}"><button class="button-crear"> Crear Receta </button> </a>
@@ -18,7 +20,25 @@
 
         <a class= "a-crear" href="{% url 'buscar_articulo' %}"><button class="button-buscar"> Buscar Receta </button></a>
         <a class= "a-crear" href="{% url 'buscar_producto' %}"><button class="button-buscar"> Buscar Producto </button></a>
-    </div>
+    </div> {% endcomment %}
+    
+ 
+
+    <div class="text-center cuadro ">
+      
+      <h1 class="display-5 fw-bold white">Blog Pastelería</h1>
+      <div class="col-lg-10 mx-auto "> 
+        
+        <p class="lead md-10 white">Blog destinado para usuarios que deseen agregar recetas o productos.</p>
+      
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <a href="{% url 'create_full' %}"><button type="button" class="btn btn-primary btn-lg px-4 gap-3">Agregar Receta</button></a>
+          <a href="{% url 'create_product' %}"><button type="button" class="btn btn-primary btn-lg px-4">Agregar Producto</button></a>
+        </div>
+     
+</div>
+</div>
+</section>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     {% if messages %}

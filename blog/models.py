@@ -45,6 +45,7 @@ class Product(models.Model):
     name = models.CharField(max_length=100, verbose_name='Nombre')
     description = models.CharField(max_length=255,verbose_name='Descripción')
     price = models.IntegerField(default = 0, verbose_name='Precio')
+    image = models.ImageField(default = 'null', verbose_name='Imagen',upload_to="products")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Creado el')
 
     class Meta:
