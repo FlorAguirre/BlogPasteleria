@@ -23,7 +23,7 @@ def articles(request):
     # Sacar articulos
     articles = Article.objects.all()
     # Paginar los articulos
-    paginator = Paginator(articles, 3)
+    paginator = Paginator(articles, 2)
 
     # Recoger numero pagina
     page = request.GET.get('page')
@@ -50,7 +50,7 @@ def products(request):
     products = Product.objects.all()
 
      # Paginar los articulos
-    paginator = Paginator(products, 3)
+    paginator = Paginator(products, 2)
 
     page = request.GET.get('page')
     page_products = paginator.get_page(page)
@@ -236,7 +236,8 @@ def create_product(request):
                 name = name,
                 description = description,
                 price = price,
-                image = image
+                image = image,
+                author =request.user
               
                 
             )
@@ -325,6 +326,36 @@ def modificar_articulo(request, id):
         data['form'] = formulario
     return render(request, 'articles/modificar.html', data)
 
+
+
+@login_required
+
+def modificar_producto(request, id):
+
+    producto = get_object_or_404(Product, id = id)
+
+    data = {
+        'form' : ProdForm(instance= producto)
+    }
+
+     # Verificar si el usuario actual es el autor del artículo
+    if request.user != producto.author and not request.user.is_superuser:
+        # Si el usuario actual no es el autor del artículo, redirigir a la página de inicio
+        messages.error(request, 'Solo el autor del producto puede editarlo o eliminarlo')
+        return redirect('inicio')
+
+    if request.method == 'POST':
+        formulario = ProdForm(data = request.POST, instance = producto, files = request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, "La receta ha sido modificada")
+            return redirect('list_productos')
+        
+        data['form'] = formulario
+    return render(request, 'products/modificar.html', data)
+
+
+
 # @user_passes_test(is_staff)
 # def eliminar_articulo(request, id):
 #     articulo = get_object_or_404(Article, id = id)
@@ -345,6 +376,20 @@ def eliminar_articulo(request, id):
     messages.success(request, "La receta ha sido eliminada")
     return redirect('list_articles')
 
+
+
+def eliminar_producto(request, id):
+    producto = get_object_or_404(Product, id = id)
+     # Verificar si el usuario actual es el autor del artículo
+    if request.user != producto.author  and not request.user.is_superuser:
+        # Si el usuario actual no es el autor del artículo, redirigir a la página de inicio
+        messages.error(request, 'Solo el autor del producto puede editarlo o eliminarlo')
+        return redirect('inicio')
+    
+    producto = get_object_or_404(Product, id=id)
+    producto.delete()
+    messages.success(request, "El producto ha sido eliminado")
+    return redirect('list_productos')
 
 
 # Agregar comentarios

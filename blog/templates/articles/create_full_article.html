@@ -6,10 +6,10 @@
 
 {%block content %}
 <body class= "body-back-crearArt"> 
-    <h1 class ="title">Crear Receta</h1>
+    <h1 class ="title title-receta">Crear Receta</h1>
 
-<br>
-<br>
+<br/>
+<div class= "contenedor">
 <form action = "" method="POST" enctype="multipart/form-data">
      {% csrf_token %} 
 
@@ -19,7 +19,7 @@
       
     
     </form>
-    
+</div>
 
 </body>
 

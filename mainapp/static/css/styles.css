@@ -43,6 +43,10 @@
   font-size: 2.1rem;
 }
 
+.title-receta{
+  color:white;
+}
+
 .date{
   display: block;
   margin-top: 10px;
@@ -56,8 +60,8 @@
 }
 
 img{
-  height: 220px;
-  width: 300px;
+  height: 240px !important;
+  width: 250px !important;
   align-items: center;
 }
 
@@ -157,20 +161,24 @@ nav > ul > li:hover > ul > li:hover a{
   
 }
 
-.box form{
+/* .box form{
   width: 35%;
-}
+} */
 
 .box form input,
 .box form label{
   display:block;
   padding:5px;
   padding-left: 0px;
+  margin-top: -5px;
+  color:white;
+  font-weight: bold;
+  
 }
 
 .box form input[type="text"],
 .box form textarea{
-  width:90%;
+  width:100%;
   margin-bottom: 10px;
 
 } 
@@ -182,6 +190,11 @@ nav > ul > li:hover > ul > li:hover a{
   margin-bottom: 10px;
 
 } 
+
+.box form textarea{
+  height: 150px;
+  width:480px;
+}
 
 .box select{
   width:150px;
@@ -206,6 +219,20 @@ nav > ul > li:hover > ul > li:hover a{
   cursor:pointer;
   background: #1f7e58;
  
+}
+
+/* .box{
+  margin-top: -10px !important;
+  width:500px;
+} */
+
+.contenedor{
+  border:1px solid black;
+  padding: 20px;
+  width: 600px;
+  background-color: hsla(0, 0%, 0%, 0.367);
+  border-radius: 5px 5px 5px 5px;
+  
 }
 
 /* .message{
@@ -251,7 +278,7 @@ nav > ul > li:hover > ul > li:hover a{
 
 .body-back {
   background-color: rgba(0, 0, 0, .7);
-  background-image: url(../images/background2.png);  
+  background-image: url(../images/background3.png);  
   
   background-size: cover;
   background-repeat: no-repeat;
@@ -269,7 +296,8 @@ nav > ul > li:hover > ul > li:hover a{
   flex-direction: column !important;
   justify-content: center !important;
   align-items: center !important;
-  margin-left: 90px;
+  margin-left: 85px;
+  margin-top: 90px;
 }
 
 .title-index{
@@ -277,7 +305,7 @@ nav > ul > li:hover > ul > li:hover a{
 }
 
 .body-back-crearArt{
-  background-image: url(../../../media/articles/textura-08.jpg) ;
+  background-image: url(../../../media/articles/background-recetas.png) ;
   background-size: cover;
 }
 
@@ -404,3 +432,5 @@ ul li a.active{
   display: flex;
   flex-direction: row;
 }
+
+

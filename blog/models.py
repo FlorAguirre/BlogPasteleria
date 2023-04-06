@@ -47,6 +47,7 @@ class Product(models.Model):
     price = models.IntegerField(default = 0, verbose_name='Precio')
     image = models.ImageField(default = 'null', verbose_name='Imagen',upload_to="products")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Creado el')
+    author = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True)
 
     class Meta:
         verbose_name = 'Producto'
