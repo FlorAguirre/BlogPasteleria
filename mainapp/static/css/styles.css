@@ -21,7 +21,7 @@
   
 
 #content{
-  height: 750px;
+  height: 500px ;
   margin-right: 10%;
   margin-left: 10%;
   margin-top: 30px;
@@ -221,6 +221,7 @@ nav > ul > li:hover > ul > li:hover a{
  
 }
 
+
 /* .box{
   margin-top: -10px !important;
   width:500px;
@@ -332,9 +333,19 @@ background-repeat: no-repeat;
 
 }
 
-/* .height{
-  height: 1200px;
-} */
+@media(min-width:1480px) {
+  .height{
+    height: 929px !important;
+} }
+
+@media screen and (min-width:376px) and (max-width:1480px) {
+   .height{
+    height: 713px !important;
+  } 
+  #content{
+    height: 500px !important;
+  }
+} 
 
 .form-register{
   width: 100%;
