@@ -11,6 +11,7 @@ from blog.forms import CommentForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.core.paginator import Paginator
+from mainapp.models import Avatar
 
 
 # Create your views here.
@@ -29,10 +30,13 @@ def articles(request):
     page = request.GET.get('page')
     page_articles = paginator.get_page(page)
     
+    avatares = Avatar.objects.filter(user=request.user.id)
 
     return render(request,'articles/list.html',{
         'title' : 'Artículos',
         'articles' : page_articles,
+        "url" : avatares[0].imagen.url
+        
     })
 
 

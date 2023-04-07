@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from blog.models import Category, Article
+from mainapp.models import Avatar
 from django.shortcuts import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from mainapp.forms import RegisterForm, UserEditForm
@@ -17,6 +18,8 @@ from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm
+from django.conf import settings
+import os
 
 # Create your views here.
 
@@ -35,14 +38,22 @@ def is_staff(user):
 
 @login_required(login_url = 'login')
 def index(request):
+
+    avatares = Avatar.objects.filter(user=request.user.id)
+
     return render(request,'mainapp/index.html',{
-        'title' : 'Inicio'
+        'title' : 'Inicio',
+        "url" : avatares[0].imagen.url
     })
 
 @login_required(login_url = 'login')
 def about(request):
+
+    avatares = Avatar.objects.filter(user=request.user.id)
+    
     return render(request,'mainapp/about.html',{
-        'title' : 'Sobre nosotros'
+        'title' : 'Sobre nosotros',
+        "url" : avatares[0].imagen.url
     })
 
 def register_page(request):
@@ -95,6 +106,7 @@ def logout_user(request):
 @login_required(login_url='login')
 def editarPerfil(request):
     usuario = request.user
+   
     if request.method == 'POST':
         miFormulario = UserEditForm(request.POST, instance=usuario)
         if miFormulario.is_valid():
@@ -141,5 +153,24 @@ def edit_user_permissions(request, user_id):
 
 def perfil(request, user_id):
     user = get_object_or_404(User, id =user_id)
+    avatares = Avatar.objects.filter(user=request.user.id)
     return render(request, 'users/perfil.html',{
-        'user' : user,})
+        'user' : user,
+        "url" : avatares[0].imagen.url})
+
+
+@login_required
+def select_avatar(request):
+
+    if request.method == 'POST':
+        selected_avatar = request.POST.get('avatar')
+        if selected_avatar:
+            avatar = Avatar.objects.get(user=request.user)
+            avatar.imagen = 'avatares/' + selected_avatar
+            avatar.save()
+            return redirect('perfil', user_id=request.user.id)
+    
+    avatar_dir = os.path.join(settings.MEDIA_ROOT, 'avatares')
+    avatares = os.listdir(avatar_dir)
+    context = {'avatares': avatares}
+    return render(request, 'users/select_avatar.html', context)

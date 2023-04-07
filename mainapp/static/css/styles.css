@@ -445,3 +445,12 @@ ul li a.active{
 }
 
 
+.imagen-avatar{
+  height: 20px !important;
+  width:20px !important;
+}
+
+.imagen-avatar-perfil{
+  height: 50px !important;
+  width:50px !important;
+}

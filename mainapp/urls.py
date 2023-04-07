@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     
@@ -11,6 +13,10 @@ urlpatterns = [
     path('perfil/<int:user_id>', views.perfil, name = 'perfil'),
     path('user_list/', views.user_list, name='user_list'),
     path('user/<int:user_id>/edit_permissions/', views.edit_user_permissions, name='edit_user_permissions'),
+    path('select-avatar/', views.select_avatar, name='select_avatar'),
+
 
 
 ]
+
+urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
