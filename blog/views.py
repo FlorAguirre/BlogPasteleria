@@ -35,7 +35,7 @@ def articles(request):
     return render(request,'articles/list.html',{
         'title' : 'Artículos',
         'articles' : page_articles,
-        "url" : avatares[0].imagen.url
+        'url' : avatares[0].imagen.url
         
     })
 
@@ -43,10 +43,13 @@ def articles(request):
 def categories(request):
 
     categories = Category.objects.all()
+
+    avatares = Avatar.objects.filter(user=request.user.id)
     
     return render(request,'categories/listcategory.html',{
         'title' : 'Categorías',
         'categories' : categories,
+        'url' : avatares[0].imagen.url
     })
 
 def products(request):
@@ -58,10 +61,14 @@ def products(request):
 
     page = request.GET.get('page')
     page_products = paginator.get_page(page)
+
+
+    avatares = Avatar.objects.filter(user=request.user.id)
     
     return render(request,'products/listproducts.html',{
         'title' : 'Productos',
         'products' : page_products,
+        'url' : avatares[0].imagen.url
     })
 
 def category(request, category_id):

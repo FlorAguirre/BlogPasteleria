@@ -1,0 +1,48 @@
+{% extends 'layouts/layout.html'%}
+
+
+
+{%block title %} {{title}} {% endblock %}
+
+
+{%block content %}
+    <body class="body-back">
+       <div class="cards">
+        <div class="card" style="width: 18rem;">
+            <div class="imagen-card"><img src="" class="card-img-top " ></div>
+            <div class="card-body">
+              <h5 class="card-title">Buscar Receta</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <img src="" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Buscar Producto</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+  
+        </div>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    {% if messages %}
+    {% for m in messages %}
+        
+   <script>
+       Swal.fire({
+           "title" : "Acceso denegado",
+           "text" : "{{m}}",
+           "icon" :"error"
+        }) 
+    
+    </script>
+    {% endfor %}
+    {% endif %}  
+
+</body>
+
+
+{% endblock %}

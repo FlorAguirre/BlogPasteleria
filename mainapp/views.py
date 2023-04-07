@@ -2,8 +2,6 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from blog.models import Category, Article
 from mainapp.models import Avatar
-from django.shortcuts import HttpResponse
-from django.contrib.auth.forms import UserCreationForm
 from mainapp.forms import RegisterForm, UserEditForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -54,6 +52,17 @@ def about(request):
     
     return render(request,'mainapp/about.html',{
         'title' : 'Sobre nosotros',
+        "url" : avatares[0].imagen.url
+    })
+
+
+@login_required(login_url = 'login')
+def buscar(request):
+
+    avatares = Avatar.objects.filter(user=request.user.id)
+
+    return render(request,'mainapp/buscar.html',{
+        'title' : 'Buscar',
         "url" : avatares[0].imagen.url
     })
 

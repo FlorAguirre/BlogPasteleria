@@ -454,3 +454,27 @@ ul li a.active{
   height: 50px !important;
   width:50px !important;
 }
+
+.cards{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap:50px;
+  margin-left: 250px;
+
+}
+
+@media screen and (min-width:376px) and (max-width:1480px){
+.cards{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap:50px;
+  margin-left: 120px;
+
+}}
+
+
+ .imagen-card{
+  background-image: url(../images/libro-recetas-blanco-su-texto-rodillo-moldes-huevos-masa-azucar-plano-ver-copie-espacio-ingredientes-hornear-utensilios-cocina-sobre-fondo-gris-galletas-vac.webp);
+} 
