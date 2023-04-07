@@ -151,3 +151,5 @@ CKEDITOR_CONFIGS = {
     }
 }
 
+DEFAULT_AVATAR_ID = 1
+DEFAULT_AVATAR = 'media/avatares/default_avatar.png'

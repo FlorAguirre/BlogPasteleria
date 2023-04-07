@@ -20,6 +20,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 from django.conf import settings
 import os
+from django.core.files import File
 
 # Create your views here.
 
@@ -56,25 +57,51 @@ def about(request):
         "url" : avatares[0].imagen.url
     })
 
+"""
 def register_page(request):
+     register_form = RegisterForm()
 
+     if request.method == 'POST':
+         register_form = RegisterForm(request.POST,request.FILES)
+
+
+         if register_form.is_valid():
+             register_form.save()
+             messages.success(request, "Se ha registrado correctamente")
+
+             return redirect('register')
+    
+
+     return render(request,'users/register.html',{
+         'title' : 'Registro',
+         'register_form' : register_form
+     })
+
+"""
+
+def register_page(request):
     register_form = RegisterForm()
 
     if request.method == 'POST':
-        register_form = RegisterForm(request.POST)
-
+        register_form = RegisterForm(request.POST,request.FILES)
 
         if register_form.is_valid():
-            register_form.save()
+            user = register_form.save()
+            # Asignar un avatar por defecto al usuario
+            default_avatar = Avatar.objects.get(pk=settings.DEFAULT_AVATAR_ID)
+            avatar = Avatar(user=user, imagen=default_avatar.imagen)
+            avatar.save()
+            # Mostrar un mensaje de éxito
             messages.success(request, "Se ha registrado correctamente")
 
             return redirect('register')
     
-
     return render(request,'users/register.html',{
         'title' : 'Registro',
         'register_form' : register_form
     })
+
+
 
 
 def login_page(request):
