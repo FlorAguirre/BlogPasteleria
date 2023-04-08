@@ -4,17 +4,19 @@
 
 {% block content %}
 
-    <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
-    <h1>Formulario - Editar Perfil</h1>
-    <h1>De {{user}}</h1>
-    
+   
+    <h1>Formulario - Editar Perfil De {{user}}</h1>
+
+    <br/>
+    <br/>
+    <br/>
 
     <form action="" method="POST">
         {% csrf_token %}
 
-        <!-- Acá está la magia de Django-->
         
-        <table>
+        
+        <table class="editar-perfil">
 
             {{ miFormulario.as_table }}
 

@@ -27,9 +27,9 @@
     <h1 class="visually-hidden">Spazio Dolce</h1>
 
     <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark height" style="width: 280px; ">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         
-          <span class="fs-4">Spazio Dolce</span>
+        <span class="fs-4">Spazio Dolce</span>
       </a>
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
@@ -81,7 +81,7 @@
           </a>
         </li>
         <li>
-          <a href="#" class="nav-link text-white">
+          <a href="{% url 'about' %}" class="nav-link text-white">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-square" width="22" height="22" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
               <line x1="12" y1="8" x2="12.01" y2="8" />
@@ -106,7 +106,7 @@
         </li>
         {% endif %}
         <li>
-          <a href="{% url 'buscar' %}" class="nav-link text-white">
+          <a href="{% url 'buscar_opciones' %}" class="nav-link text-white">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="22" height="22" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
               <circle cx="10" cy="10" r="7" />
@@ -116,7 +116,7 @@
           </a>
         </li>
         <li>
-          <a href="{% url 'buscar' %}" class="nav-link text-white">
+          <a href="{% url 'contactanos' %}" class="nav-link text-white">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-send" width="22" height="22" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
               <line x1="10" y1="14" x2="21" y2="3" />

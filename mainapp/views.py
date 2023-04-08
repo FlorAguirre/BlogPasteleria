@@ -57,7 +57,7 @@ def about(request):
 
 
 @login_required(login_url = 'login')
-def buscar(request):
+def buscarBase(request):
 
     avatares = Avatar.objects.filter(user=request.user.id)
 
@@ -210,3 +210,25 @@ def select_avatar(request):
     avatares = os.listdir(avatar_dir)
     context = {'avatares': avatares}
     return render(request, 'users/select_avatar.html', context)
+
+def contactanos(request):
+    register_form = RegisterForm()
+
+    if request.method == 'POST':
+        register_form = RegisterForm(request.POST,request.FILES)
+
+        if register_form.is_valid():
+            user = register_form.save()
+            # Asignar un avatar por defecto al usuario
+            default_avatar = Avatar.objects.get(pk=settings.DEFAULT_AVATAR_ID)
+            avatar = Avatar(user=user, imagen=default_avatar.imagen)
+            avatar.save()
+            # Mostrar un mensaje de éxito
+            messages.success(request, "Se ha registrado correctamente")
+
+            return redirect('inicio')
+    
+    return render(request,'mainapp/contactanos.html',{
+        'title' : 'Registro',
+        'register_form' : register_form
+    })

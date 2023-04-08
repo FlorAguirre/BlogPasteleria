@@ -1,0 +1,28 @@
+{% extends 'layouts/layout.html'%}
+
+
+
+{%block title %} {{title}} {% endblock %}
+
+
+{%block content %}
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    {% if messages %}
+    {% for m in messages %}
+        
+   <script>
+       Swal.fire({
+           "title" : "Acceso denegado",
+           "text" : "{{m}}",
+           "icon" :"error"
+        }) 
+    
+    </script>
+    {% endfor %}
+    {% endif %}  
+
+</body>
+
+
+{% endblock %}

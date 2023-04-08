@@ -7,6 +7,7 @@ urlpatterns = [
     
     path('', views.login_page, name = 'login'),
     path('inicio/', views.index, name = 'inicio'),
+    path('about/', views.about, name = 'about'),
     path('register/', views.register_page, name = 'register'),
     path('logout/', views.logout_user, name = 'logout'),
     path('editar-perfil/', views.editarPerfil, name = 'editar_perfil'),
@@ -14,7 +15,8 @@ urlpatterns = [
     path('user_list/', views.user_list, name='user_list'),
     path('user/<int:user_id>/edit_permissions/', views.edit_user_permissions, name='edit_user_permissions'),
     path('select-avatar/', views.select_avatar, name='select_avatar'),
-    path('buscar/', views.buscar, name='buscar'),
+    path('buscar-opciones/', views.buscarBase, name='buscar_opciones'),
+    path('contactanos/', views.contactanos, name='contactanos'),
 
 
 

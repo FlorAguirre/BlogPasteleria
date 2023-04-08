@@ -9,20 +9,20 @@
     <body class="body-back">
        <div class="cards">
         <div class="card" style="width: 18rem;">
-            <div class="imagen-card"><img src="" class="card-img-top " ></div>
+            <img  class="card-img-top imagen-card" >
             <div class="card-body">
               <h5 class="card-title">Buscar Receta</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <p class="card-text">En esta sección podras buscar las recetas que necesites.</p>
+              <a href="{% url 'buscar_articulo' %}" class="btn btn-primary text-btn-card">Buscar</a>
             </div>
           </div>
 
-          <div class="card" style="width: 18rem;">
-            <img src="" class="card-img-top" alt="...">
+          <div class="card " style="width: 18rem;">
+            <img  class="card-img-top imagen-card2">
             <div class="card-body">
               <h5 class="card-title">Buscar Producto</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <p class="card-text">En esta sección podras buscar los productos que desees comprar.</p>
+              <a href="{% url 'buscar_producto' %}" class="btn btn-primary text-btn-card">Buscar</a>
             </div>
           </div>
   
