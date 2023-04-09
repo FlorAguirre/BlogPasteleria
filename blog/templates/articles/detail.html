@@ -5,7 +5,7 @@
 
 
 {%block content %}
-
+<div class="verReceta">
 {% if article.image != 'null' and article.image.url|length >= 1 %}
 <div class ="image">
     <img src = "{{article.image.url}}" />
@@ -13,18 +13,13 @@
 
 {% endif%}
     <h1 class ="title">{{article.title}}</h1>
-    <span class = "date">{{article.created_at}}</span>
+    <span class = "date"> {{article.author.first_name}} {{article.author.last_name}} | {{article.created_at}}</span>
     <p class = "content">
         {{article.content| safe}}
     </p>
 
 
-    <p>{{ likes_count }} Likes</p>
-    <form action="{% url 'like_article' article.id %}" method="POST">
-        {% csrf_token %}
-        <button type="submit">Like</button>
-    </form>
-
+   
     <br/><br/>
     <a href="{% url 'crear_comentario' article.id %}"><h4>Agregar un comentario...</h4></a>
 
@@ -48,5 +43,7 @@
       <p>No hay comentarios aún.</p>
     {% endfor %}
 
-    <a href="{% url 'list_articles' %}"><button>Volver</button></a>
+    <a href="{% url 'list_articles' %}"><button class="btn btn-primary">Volver</button></a>
+
+</div>
 {% endblock %}

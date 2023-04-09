@@ -4,21 +4,21 @@
 
 {% block content %}
 
-<div class="card">
-    <div class="card-body">
+<div class="card formEditarReceta">
+    <div class="card-body ">
         <h2> Editar Receta </h2>
         <hr>
 
-        <div class="row">
+        <div class=" form-edit">
             <div class="col-12 col-md-6 offset-md-3">
 
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form class ="formEditReceta" action="" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
 
                     {{form}}
 
-                    <div class="d-flex justify-content-center">
-                        <a href="{% url 'list_articles' %}"><button>Cancelar</button></a>
+                    <div class="d-flex justify-content-center formEditBotones">
+                        <a href="{% url 'list_articles' %}"><button class="btn btn-primary" >Cancelar</button></a>
                         <input type='submit' value='Editar' class="btn btn-primary">
                     </div>
                 </form>

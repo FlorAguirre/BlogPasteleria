@@ -46,6 +46,9 @@ def categories(request):
 
     avatares = Avatar.objects.filter(user=request.user.id)
     
+
+
+    
     return render(request,'categories/listcategory.html',{
         'title' : 'Categorías',
         'categories' : categories,
@@ -76,10 +79,14 @@ def category(request, category_id):
     category = get_object_or_404(Category, id=category_id)
     articles = Article.objects.filter(categories = category_id)
     avatares = Avatar.objects.filter(user=request.user.id)
+    paginator = Paginator(articles, 2)
+
+    page = request.GET.get('page')
+    page_categories = paginator.get_page(page)
     
     return render(request,'categories/category.html',{
         'category' : category,
-        'articles' :articles,
+        'articles' :page_categories,
         'url' : avatares[0].imagen.url
     })
 

@@ -262,6 +262,15 @@ nav>ul>li:hover>ul>li:hover a {
 
 /* Recetas */
 
+.article-item {
+  display: flex;
+  flex-direction: row;
+  margin-left: 20%;
+  margin-top: 40px;
+  width:100%;
+}
+
+
 
 .title-receta {
   color: white;
@@ -282,6 +291,83 @@ nav>ul>li:hover>ul>li:hover a {
 
 .content {
   line-height: 25px;
+}
+
+/* Modificar - Receta */
+
+.formEditarReceta{
+  width:700px;
+  margin-left: 50%;
+  margin-top: 40px;
+}
+
+.formEditReceta label{
+  color:black !important;
+
+}
+
+.form-edit{
+  margin-left: -150px;
+}
+
+.formEditBotones{
+  gap:20px;
+}
+
+
+@media screen and (min-width:376px) and (max-width:1480px) {
+.formEditarReceta{
+  width:700px;
+  margin-left: 45%;
+  margin-top: -10px;
+}
+
+.formEditReceta label{
+    color:black !important;
+}
+
+.formEditReceta textarea{
+    height: 100px !important;
+    width: 380px !important;
+}
+
+.form-edit{
+  margin-left: -150px;
+}
+
+.formEditBotones{
+  gap:20px;
+}
+
+}
+
+
+/* Ver Receta */ 
+
+.verReceta{
+  width:100%;
+  margin-left: 50%;
+  margin-top: 40px;
+}
+
+
+
+/* Categorías */
+.category-item{
+  margin-left: 20%;
+  margin-top: 40px;
+  width:100%;
+}
+
+
+.title-categories{
+  margin-left: 28%;
+  margin-top: 20px;
+}
+
+.title-category{
+  margin-left: 15%;
+  margin-top: 20px;
 }
 
 
@@ -496,13 +582,6 @@ nav>ul>li:hover>ul>li:hover a {
   margin: 40px;
 }
 
-.article-item {
-  display: flex;
-  flex-direction: row;
-  margin-left: 20%;
-  margin-top: 40px;
-  width:100%;
-}
 
 /* Sidebar Active */
 

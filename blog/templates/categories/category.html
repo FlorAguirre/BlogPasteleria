@@ -5,9 +5,10 @@
 
 
 {%block content %}
-    <h1 class ="title">{{category.name}}</h1>
-    <p>{{category.description}} </p>
+    <h1 class ="title-category">{{category.name}}</h1>
+   
 
     {% include 'articles/articles.html' %}
+    {% include 'categories/pagination.html' %}
 
 {% endblock %}
