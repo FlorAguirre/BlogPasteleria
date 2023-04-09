@@ -9,12 +9,13 @@
 {%block content %}
 
 
-<h1> Estamos buscando el producto :{{name}}</h1>
+<h1 class="title-resultado"> Resultado de la búsqueda :{{name}}</h1>
 {% if productos %}
-
+<br/>
+<br/>
 <ul> 
     {% for producto in productos%}
-        <li> Nombre del Producto: {{producto.name}} </li>
+       <a href={% url 'product' producto.id%}> <li> Nombre del Producto: {{producto.name}} </li></a>
         <li> Descripción: {{producto.description}} </li>
         <li> Precio: {{producto.price}} </li>
 <hr>

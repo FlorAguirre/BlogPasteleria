@@ -458,58 +458,48 @@ nav>ul>li:hover>ul>li:hover a {
 
 }
 
-/* .message{
-  padding: 20px;
-  background:#1f7e58;
-  color:white;
-  text-align: center;
-  margin-bottom: 10px;
-} */
-
-/* .button-crear {
-  height: 50px;
-  background-color: #2ba977;
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-
-}
-
-.a-crear {
-  color: white !important;
-  font-weight: bold;
-
-}
-
-.botones {
 
 
-  margin-top: 40px;
-}
-
-
-.button-buscar {
-  height: 50px;
-  background-color: #2876cf;
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-
-} */
-
-
-/* Formulario de Crear Receta */
+/* Formulario de Crear Receta - Crear Categoría - Crear Producto */
 
 
 .body-back-crearArt {
-  background-image: url(../../../media/articles/background-recetas.png);
+
   background-size: cover;
+}
+
+.title-receta{
+  width:100%;
+  color:black;
+  margin-left: 20%;
+}
+
+.crear-receta{
+  margin-left: 30%;
+}
+
+.crear-label label{
+  color:black !important;
+}
+
+
+/* Perfil */
+
+.title-perfil{
+  width:100%;
+  color:black;
+  margin-left: 10%;
+  margin-top: 20px;
+}
+
+.perfil-table{
+  margin-left: 30% !important;
 }
 
 /* Formulario de Crear Categoría*/
 
 .body-back-crearCat {
-  background-image: url(../../../media/articles/textura-08.jpg);
+  
   background-size: cover;
 }
 
@@ -663,6 +653,22 @@ ul li a.active {
   width: 50px !important;
 }
 
+
+.imagen-avatar-select{
+  height: 40px !important;
+  width: 40px !important;
+}
+
+.avatares{
+  display: flex;
+  flex-direction: row;
+  margin-left: 30%;
+  margin-top: 20px;
+}
+
+.avatar-boton{
+  margin-left: 30%;
+}
  /* Buscar */
 
 .cards {
@@ -670,7 +676,8 @@ ul li a.active {
   flex-direction: row;
   justify-content: space-around;
   gap: 50px;
-  margin-left: 250px;
+  margin-left: 450px;
+  margin-top: 150px;
 
 }
 
@@ -680,7 +687,7 @@ ul li a.active {
     flex-direction: row;
     justify-content: space-around;
     gap: 50px;
-    margin-left: 120px;
+    margin-left: 300px;
 
   }
 }
@@ -707,6 +714,22 @@ ul li a.active {
   color: white !important;
 }
 
+.title-buscar{
+  width:100%;
+  margin-left: 15%;
+  margin-top: 20px;
+}
+
+.form-buscar-articulo{
+  width: 100%;
+  margin-left: 40%;
+}
+
+.title-resultado{
+  width:100%;
+  margin-left: 15%;
+  margin-top: 20px;
+}
 
 
 /* Acerca de mí */
@@ -715,6 +738,9 @@ ul li a.active {
   display: flex;
   flex-direction: row;
   gap: 60px;
+  width:100%;
+  margin-left: 60%;
+  margin-top: 20%;
 }
 
 .imagen-about{
@@ -731,3 +757,25 @@ ul li a.active {
 .iconos{
   margin-left: 70px;
 }
+
+/* Usuarios */
+
+.title-usuarios{
+  margin-left: 10%;
+  margin-top: 20px;
+}
+
+
+
+.form-editar-permisos{
+  margin-left: 20%;
+}
+
+@media screen and (min-width:376px) and (max-width:1480px){
+  .form-editar-permisos{
+  margin-left: 10%;
+  
+}}
+
+/* Buscar */
+

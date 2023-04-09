@@ -19,11 +19,9 @@
     </p>
 
 
-   
-    <br/><br/>
     <a href="{% url 'crear_comentario' article.id %}"><h4>Agregar un comentario...</h4></a>
 
-    <br/><br/>
+    
 
     {% comment %} <form method="post">
       {% csrf_token %}
@@ -32,7 +30,7 @@
     </form> {% endcomment %}
   
     <!-- Mostrar los comentarios existentes -->
-    <h2>Comentarios:</h2>
+    <h3>Comentarios:</h3>
     {% for comment in article.comments.all %}
       <strong><p>{{ comment.author }} | {{ comment.created_on }} </strong> 
      

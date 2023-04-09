@@ -1,15 +1,23 @@
 {% extends 'layouts/layout.html' %}
 
 {% block content %}
-  <h1>Seleccione su avatar:</h1>
+  <h1 class=" title title-receta">Seleccione su avatar:</h1>
   <form method="post" action="{% url 'select_avatar' %}" enctype="multipart/form-data">
+    <br/>
     {% csrf_token %}
+    <div class="avatares">
     {% for avatar in avatares %}
+    
       <label>
         <input type="radio" name="avatar" value="{{ avatar }}">
-        <img src="/media/avatares/{{ avatar }}" alt="{{ avatar }}">
+        <img  class="imagen-avatar-select"src="/media/avatares/{{ avatar }}" alt="{{ avatar }}">
       </label>
+  
     {% endfor %}
-    <button type="submit">Seleccionar</button>
+     </div>
+     <br/>
+    <div>
+    <button class="avatar-boton" type="submit">Seleccionar</button>
+    </div>
   </form>
 {% endblock %}

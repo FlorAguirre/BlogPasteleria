@@ -9,12 +9,14 @@
 {%block content %}
 
 
-<h1> Estamos buscando la receta :{{title}} </h1> 
+<h1 class="title-resultado"> Resultado de la búsqueda :{{title}} </h1> 
 {% if articulos %}
 
+<br/>
+<br/>
 <ul> 
     {% for articulo in articulos%}
-        <li> Título: {{articulo.title}} </li>
+        <a href="{% url 'article' articulo.id %}"><li> Título: {{articulo.title}} </li></a>
         <li> Contenido: {{articulo.content}} </li>
 <hr>
     {% endfor %}

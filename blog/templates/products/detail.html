@@ -19,30 +19,9 @@
     </p>
 
 
-    <br/><br/>
-    <a href="{% url 'crear_comentario_producto' product.id %}"><h4>Agregar un comentario...</h4></a>
 
-    <br/><br/>
 
-    {% comment %} <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Enviar comentario</button>
-    </form> {% endcomment %}
-  
-    <!-- Mostrar los comentarios existentes -->
-    <h2>Comentarios:</h2>
-    {% for comment in product.comments.all %}
-      <strong><p>{{ comment.author }} | {{ comment.created_on }} </strong> 
-     
-      <p>{{ comment.content }}</p>
-      
-      <hr>
-    {% empty %}
-      <p>No hay comentarios aún.</p>
-    {% endfor %}
-
-    <a href="{% url 'list_productos' %}"><button>Volver</button></a>
+    <a href="{% url 'list_productos' %}"><button class="btn btn-primary">Volver</button></a>
 
   </div>
 {% endblock %}

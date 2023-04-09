@@ -154,7 +154,7 @@ def editarPerfil(request):
             usuario.first_name = informacion['first_name']
             usuario.save()
             messages.success(request, "Se ha modificado el usuario correctamente")
-            return render(request, "users/perfil.html")
+            return render(request, "users/perfil.html",{'url' : avatares[0].imagen.url})
     else:
            # Obtener el objeto User actual y pasarlo como instancia del formulario
         miFormulario = UserEditForm(instance=usuario)

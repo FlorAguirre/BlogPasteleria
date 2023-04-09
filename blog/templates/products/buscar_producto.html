@@ -5,11 +5,11 @@
 
 
 {%block content %}
-    <h1 class ="title">Buscar Producto</h1>
+    <h1 class ="title-buscar">Buscar Producto</h1>
 
 <br>
 <br>
-<form action = "{% url 'buscarP' %}" method="POST">
+<form class= "form-buscar-articulo"  action = "{% url 'buscarP' %}" method="POST">
     {% csrf_token %} 
 
     <input type='text' name="name">

@@ -5,7 +5,7 @@ PARA EL FUNCIONAMIENTO CORRECTO DE LA PAGINA WEB SE DEBERA DESCARGAR POR TERMINA
 - CKEDITOR (pip install django-ckeditor )
 - PILLOW (Python -m pip install Pillow)
 
-** Hay dos videos a modo explicativo de como funciona la pagina. Los videos son: "Crear" y "Buscar" **
+** Hay cuatro videos a modo explicativo de como funciona la pagina. Los videos son: "Video1",;"Video2", "Video3","Video4" **
 
 ## Descripción
 
@@ -21,13 +21,11 @@ Antes de visualizar la página de Inicio el usuario deberá iniciar sesión o re
 - **Crear Producto**: El boton lleva una pagina donde se encuentra el formulario para cargar un producto. Una vez cargada la categoría, la misma aparecerá en el listado de productos con un mensaje de que se guardo exitosamente.
 
 
-
-
 2. En la página de Categorías (NavBar), se podrá encontrar el listado de las categorías existentes en la base de datos.
 
 3. En la página de Recetas (NavBar), se podrá encontrar el listado de las recetas existentes en la base de datos. Las mismas tienen las opciones de editar, borrar y ver. En la sección de Ver, se podrá dejar comentarios entre usuarios.
 
-4. En la página de Productos (NavBar), se podrá encontrar el listado de los productos existentes en la base de datos. Los mismos tienen las opciones de editar, borrar y ver. En la sección de Ver, se podrá dejar comentarios entre usuarios.
+4. En la página de Productos (NavBar), se podrá encontrar el listado de los productos existentes en la base de datos. Los mismos tienen las opciones de editar, borrar y ver. 
 
 5. En la página de Acerca de, se podrá encontrar la información sobre el creador del blog.
 
@@ -45,6 +43,8 @@ Antes de visualizar la página de Inicio el usuario deberá iniciar sesión o re
 10. En la sección de Agregar Categoría Producto..., se podrá visualizar un formulario para crear un nuevo producto
 
 11. En la sección de Perfil, se podrá visualizar el Perfil del usuario. El mismo se puede editar y se guarda en la base de datos.
+
+12. Selección del Avatar, se deberá hacer click en la imagen del avatar para poder seleccionar un avatar diferente.
 
 
 ## Requisitos de la pre-entrega:

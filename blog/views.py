@@ -3,10 +3,7 @@ from blog.models import Category, Article, Product, Like
 from django.shortcuts import render,HttpResponse, redirect
 from blog.forms import ArtForm, CatForm, ProdForm
 from django.contrib import messages
-from django.contrib.auth.decorators import user_passes_test
-from mainapp.views import is_active,is_staff
 from django.contrib.auth.decorators import login_required, permission_required
-from django.http import HttpResponseForbidden
 from blog.forms import CommentForm,CommentFormProducto
 from django.http import HttpResponseRedirect
 from django.urls import reverse

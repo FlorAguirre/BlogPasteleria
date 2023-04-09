@@ -87,8 +87,8 @@ class CommentProducto(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        verbose_name = 'Comentario'
-        verbose_name_plural = 'Comentarios'
+        verbose_name = 'Comentario Producto'
+        verbose_name_plural = 'Comentarios Producto'
         ordering = ['-created_on']
 
     

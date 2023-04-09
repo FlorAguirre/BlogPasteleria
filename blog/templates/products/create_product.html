@@ -6,11 +6,12 @@
 
 {%block content %}
 <body class= "body-back-crearCat">
-    <h1 class ="title">Crear Producto</h1>
+    <h1 class ="title title-receta">Crear Producto</h1>
 
 <br>
 <br>
-<form action = "" method="POST" enctype="multipart/form-data">
+<div class= "contenedor crear-receta">
+<form class="crear-label" action = "" method="POST" enctype="multipart/form-data">
      {% csrf_token %} 
 
      {{form}}
@@ -19,6 +20,7 @@
       
     
     </form>
+</div>
 </body>
 {% endblock %}
 
