@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import user_passes_test
 from mainapp.views import is_active,is_staff
 from django.contrib.auth.decorators import login_required, permission_required
 from django.http import HttpResponseForbidden
-from blog.forms import CommentForm
+from blog.forms import CommentForm,CommentFormProducto
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.core.paginator import Paginator
@@ -118,7 +118,7 @@ def product(request, product_id):
 
     product = get_object_or_404(Product, id =product_id)
     avatares = Avatar.objects.filter(user=request.user.id)
-    return render(request, 'products/product.html',{
+    return render(request, 'products/detail.html',{
         'product' : product,
         'url' : avatares[0].imagen.url
     })
@@ -434,32 +434,9 @@ def eliminar_producto(request, id):
     return redirect('list_productos')
 
 
-# Agregar comentarios
+# Agregar comentarios en Recetas
 
 @login_required
-def add_comment(request, article_id):
-    article = Article.objects.get(id=article_id)
-
-    if request.method == 'POST':
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.article = article
-            comment.author = request.user
-            comment.save()
-            messages.success(request, 'Tu comentario ha sido agregado')
-            return redirect('article', article_id=article_id)
-    else:
-        form = CommentForm()
-
-    context = {
-        'article': article,
-        'form': form
-    }
-
-    return render(request, 'articles/detail.html', context)
-
-
 def crear_comentario(request, article_id):
     article = Article.objects.get(id=article_id)
 
@@ -481,4 +458,31 @@ def crear_comentario(request, article_id):
     }
 
     return render(request, 'articles/agregar_comentario.html', context)
+
+
+
+# Agregar Comentarios en Productos
+
+@login_required
+def crear_comentario_producto(request, product_id):
+    product = Product.objects.get(id=product_id)
+
+    if request.method == 'POST':
+        form = CommentFormProducto(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.product = product
+            comment.author = request.user
+            comment.save()
+            messages.success(request, 'Tu comentario ha sido agregado')
+            return redirect('product', product_id=product_id)
+    else:
+        form = CommentFormProducto()
+
+    context = {
+        'product': product,
+        'form': form
+    }
+
+    return render(request, 'products/agregar_comentario.html', context)
 

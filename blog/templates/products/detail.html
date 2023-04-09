@@ -1,32 +1,26 @@
 {% extends 'layouts/layout.html'%}
 
 
-{%block title %} {{article.title}} {% endblock %}
+{%block title %} {{product.name}} {% endblock %}
 
 
 {%block content %}
-
-{% if article.image != 'null' and article.image.url|length >= 1 %}
+<div class="verReceta">
+{% if product.image != 'null' and product.image.url|length >= 1 %}
 <div class ="image">
-    <img src = "{{article.image.url}}" />
+    <img src = "{{product.image.url}}" />
 </div>
 
 {% endif%}
-    <h1 class ="title">{{article.title}}</h1>
-    <span class = "date">{{article.created_at}}</span>
+    <h1 class ="title">{{product.name}}</h1>
+    <span class = "date">{{product.created_at}}</span>
     <p class = "content">
-        {{article.content| safe}}
+        {{product.description| safe}}
     </p>
 
 
-    <p>{{ likes_count }} Likes</p>
-    <form action="{% url 'like_article' article.id %}" method="POST">
-        {% csrf_token %}
-        <button type="submit">Like</button>
-    </form>
-
     <br/><br/>
-    <a href="{% url 'crear_comentario' article.id %}"><h4>Agregar un comentario...</h4></a>
+    <a href="{% url 'crear_comentario_producto' product.id %}"><h4>Agregar un comentario...</h4></a>
 
     <br/><br/>
 
@@ -38,7 +32,7 @@
   
     <!-- Mostrar los comentarios existentes -->
     <h2>Comentarios:</h2>
-    {% for comment in article.comments.all %}
+    {% for comment in product.comments.all %}
       <strong><p>{{ comment.author }} | {{ comment.created_on }} </strong> 
      
       <p>{{ comment.content }}</p>
@@ -48,5 +42,7 @@
       <p>No hay comentarios aún.</p>
     {% endfor %}
 
-    <a href="{% url 'list_articles' %}"><button>Volver</button></a>
+    <a href="{% url 'list_productos' %}"><button>Volver</button></a>
+
+  </div>
 {% endblock %}
