@@ -18,7 +18,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 from django.conf import settings
 import os
-from django.core.files import File
+from django.core.mail import send_mail
 
 # Create your views here.
 
@@ -142,6 +142,7 @@ def logout_user(request):
 @login_required(login_url='login')
 def editarPerfil(request):
     usuario = request.user
+    avatares = Avatar.objects.filter(user=request.user.id)
    
     if request.method == 'POST':
         miFormulario = UserEditForm(request.POST, instance=usuario)
@@ -162,7 +163,7 @@ def editarPerfil(request):
         miFormulario.fields['email'].initial = usuario.email
         miFormulario.fields['last_name'].initial = usuario.last_name
         miFormulario.fields['first_name'].initial = usuario.first_name
-    return render(request, "users/editarPerfil.html", {"miFormulario": miFormulario, "usuario": usuario})
+    return render(request, "users/editarPerfil.html", {"miFormulario": miFormulario, "usuario": usuario, 'url' : avatares[0].imagen.url})
 
 
 
@@ -171,12 +172,18 @@ def editarPerfil(request):
 @user_passes_test(lambda u: u.is_superuser)
 def user_list(request):
     users = User.objects.all()
-    return render(request, 'users/user_list.html', {'users': users})
+    avatares = Avatar.objects.filter(user=request.user.id)
+    return render(request, 'users/user_list.html', {
+        'users': users,
+        'url' : avatares[0].imagen.url
+        })
+
 
 @login_required
 @permission_required('auth.change_user', raise_exception=True)
 def edit_user_permissions(request, user_id):
     user = get_object_or_404(User, id=user_id)
+    avatares = Avatar.objects.filter(user=request.user.id)
     if request.method == 'POST':
         form = UserChangeForm(request.POST, instance=user)
         if form.is_valid():
@@ -184,7 +191,7 @@ def edit_user_permissions(request, user_id):
             return redirect('user_list')
     else:
         form = UserChangeForm(instance=user)
-    return render(request, 'users/edit_user_permissions.html', {'form': form, 'user': user})
+    return render(request, 'users/edit_user_permissions.html', {'form': form, 'user': user,'url' : avatares[0].imagen.url})
 
 
 def perfil(request, user_id):
@@ -198,6 +205,7 @@ def perfil(request, user_id):
 @login_required
 def select_avatar(request):
 
+
     if request.method == 'POST':
         selected_avatar = request.POST.get('avatar')
         if selected_avatar:
@@ -208,27 +216,7 @@ def select_avatar(request):
     
     avatar_dir = os.path.join(settings.MEDIA_ROOT, 'avatares')
     avatares = os.listdir(avatar_dir)
-    context = {'avatares': avatares}
+    avatares_url = Avatar.objects.filter(user=request.user.id)
+    context = {'avatares': avatares, "url" : avatares_url[0].imagen.url}
     return render(request, 'users/select_avatar.html', context)
 
-def contactanos(request):
-    register_form = RegisterForm()
-
-    if request.method == 'POST':
-        register_form = RegisterForm(request.POST,request.FILES)
-
-        if register_form.is_valid():
-            user = register_form.save()
-            # Asignar un avatar por defecto al usuario
-            default_avatar = Avatar.objects.get(pk=settings.DEFAULT_AVATAR_ID)
-            avatar = Avatar(user=user, imagen=default_avatar.imagen)
-            avatar.save()
-            # Mostrar un mensaje de éxito
-            messages.success(request, "Se ha registrado correctamente")
-
-            return redirect('inicio')
-    
-    return render(request,'mainapp/contactanos.html',{
-        'title' : 'Registro',
-        'register_form' : register_form
-    })

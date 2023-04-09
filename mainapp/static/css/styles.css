@@ -26,31 +26,6 @@
 }
 
 
-/* Inicio */
-
-@media(min-width:1480px) {
-  #content {
-    height: 500px;
-    margin-right: 10%;
-    margin-left: 18%;
-    margin-top: 100px;
-    text-align: justify;
-  }
-}
-
-@media screen and (min-width:376px) and (max-width:1480px) {
-  #content {
-    height: 500px;
-    margin-right: 10%;
-    margin-left: 10%;
-    margin-top: 100px;
-    text-align: justify;
-  }
-}
-
-
-
-
 .title {
   color: #444;
   letter-spacing: 1px;
@@ -58,22 +33,6 @@
   margin-bottom: 10px;
   margin-top: 5px;
   font-size: 2.1rem;
-}
-
-.title-receta {
-  color: white;
-}
-
-.date {
-  display: block;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  color: grey;
-}
-
-
-.content {
-  line-height: 25px;
 }
 
 img {
@@ -119,25 +78,6 @@ nav>ul>li:hover>ul>li:hover {
 nav>ul>li:hover>ul>li:hover a {
   display: block;
   color: white;
-}
-
-
-.categ {
-  color: white;
-}
-
-.boton-search {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  height: 50px;
-  width: 350px;
-  margin-left: 20px;
-}
-
-.boton {
-  height: 50px;
-  width: 150px;
 }
 
 /* 
@@ -243,10 +183,127 @@ nav>ul>li:hover>ul>li:hover a {
 }
 
 
+.pagination{
+  margin-left: 20%;
+}
+
+.hr{
+  margin-left: 20%;
+}
 /* .box{
   margin-top: -10px !important;
   width:500px;
 } */
+
+/* Inicio */
+
+/* @media(min-width:1480px) {
+  #content {
+    height: 500px;
+    margin-right: 10%;
+    margin-left: 18%;
+    margin-top: 100px;
+    text-align: justify;
+  }
+}
+
+@media screen and (min-width:376px) and (max-width:1480px) {
+  #content {
+    height: 500px;
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 100px;
+    text-align: justify;
+  }
+} */
+
+@media(min-width:1480px) {
+.hero{
+  width:100%;
+  margin-left: 35%;
+  margin-top: 200px;
+}}
+
+
+@media screen and (min-width:376px) and (max-width:1480px)  {
+  .hero{
+    width:100%;
+    margin-left: 15%;
+    margin-top: 200px;
+  }}
+
+  .body-back {
+    background-color: rgba(0, 0, 0, .7);
+    background-image: url(../images/background3.png);
+  
+    background-size: cover;
+    background-repeat: no-repeat;
+  
+    width: 100%;
+  }
+  
+  .white {
+    color: white;
+    font-weight: bold;
+  }
+  
+  .cuadro {
+    display: flex;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-left: 85px;
+    margin-top: 90px;
+  }
+  
+  .title-index {
+    color: white;
+  }
+
+/* Recetas */
+
+
+.title-receta {
+  color: white;
+}
+
+.title-recetas{
+  margin-left: 18%;
+  margin-top: 20px;
+}
+
+.date {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: grey;
+}
+
+
+.content {
+  line-height: 25px;
+}
+
+
+
+.categ {
+  color: white;
+}
+
+.boton-search {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  height: 50px;
+  width: 350px;
+  margin-left: 20px;
+}
+
+.boton {
+  height: 50px;
+  width: 150px;
+}
+
 
 .contenedor {
   border: 1px solid black;
@@ -265,7 +322,7 @@ nav>ul>li:hover>ul>li:hover a {
   margin-bottom: 10px;
 } */
 
-.button-crear {
+/* .button-crear {
   height: 50px;
   background-color: #2ba977;
   margin-left: 15px;
@@ -294,58 +351,38 @@ nav>ul>li:hover>ul>li:hover a {
   color: white;
   font-weight: bold;
 
-}
+} */
 
 
+/* Formulario de Crear Receta */
 
-.body-back {
-  background-color: rgba(0, 0, 0, .7);
-  background-image: url(../images/background3.png);
-
-  background-size: cover;
-  background-repeat: no-repeat;
-
-  width: 100%;
-}
-
-.white {
-  color: white;
-  font-weight: bold;
-}
-
-.cuadro {
-  display: flex;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
-  margin-left: 85px;
-  margin-top: 90px;
-}
-
-.title-index {
-  color: white;
-}
 
 .body-back-crearArt {
   background-image: url(../../../media/articles/background-recetas.png);
   background-size: cover;
 }
 
+/* Formulario de Crear Categoría*/
+
 .body-back-crearCat {
   background-image: url(../../../media/articles/textura-08.jpg);
   background-size: cover;
 }
+
+/* Recetas - Background */
 
 .body-list {
   background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
   background-size: cover;
 }
 
+/* Categoría - Background */
 .body-list-cat {
   background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
 
 }
 
+/* Productos - Background */
 .body-list-prod {
 
   background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
@@ -353,6 +390,8 @@ nav>ul>li:hover>ul>li:hover a {
 
 
 }
+
+
 
 @media(min-width:1480px) {
   .height {
@@ -369,6 +408,8 @@ nav>ul>li:hover>ul>li:hover a {
     height: 500px !important;
   }
 }
+
+/* Login, Logout y Register */
 
 .form-register {
   width: 100%;
@@ -416,8 +457,6 @@ nav>ul>li:hover>ul>li:hover a {
 }
 
 
-
-
 .label-register {
   padding: 10px;
 }
@@ -447,14 +486,6 @@ nav>ul>li:hover>ul>li:hover a {
   background-color: #5555;
 }
 
-ul li a.active {
-  display: block;
-  background-color: #0d6efd !important;
-  color: white;
-  padding: 10px;
-
-}
-
 .register-errors {
   margin-top: 20px;
   background-color: #d57eeb;
@@ -468,8 +499,22 @@ ul li a.active {
 .article-item {
   display: flex;
   flex-direction: row;
+  margin-left: 20%;
+  margin-top: 40px;
+  width:100%;
 }
 
+/* Sidebar Active */
+
+ul li a.active {
+  display: block;
+  background-color: #0d6efd !important;
+  color: white;
+  padding: 10px;
+
+}
+
+/* Avatar */
 
 .imagen-avatar {
   height: 20px !important;
@@ -480,6 +525,8 @@ ul li a.active {
   height: 50px !important;
   width: 50px !important;
 }
+
+ /* Buscar */
 
 .cards {
   display: flex;

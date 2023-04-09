@@ -16,7 +16,7 @@ urlpatterns = [
     path('user/<int:user_id>/edit_permissions/', views.edit_user_permissions, name='edit_user_permissions'),
     path('select-avatar/', views.select_avatar, name='select_avatar'),
     path('buscar-opciones/', views.buscarBase, name='buscar_opciones'),
-    path('contactanos/', views.contactanos, name='contactanos'),
+
 
 
 

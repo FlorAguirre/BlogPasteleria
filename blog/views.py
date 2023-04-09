@@ -75,18 +75,21 @@ def category(request, category_id):
 
     category = get_object_or_404(Category, id=category_id)
     articles = Article.objects.filter(categories = category_id)
-
+    avatares = Avatar.objects.filter(user=request.user.id)
     
     return render(request,'categories/category.html',{
         'category' : category,
-        'articles' :articles
+        'articles' :articles,
+        'url' : avatares[0].imagen.url
     })
 
 def article(request, article_id):
 
     article = get_object_or_404(Article, id =article_id)
+    avatares = Avatar.objects.filter(user=request.user.id)
     return render(request, 'articles/detail.html',{
         'article' : article,
+        'url' : avatares[0].imagen.url
         
    })
 
@@ -107,9 +110,10 @@ def like_article(request, article_id):
 def product(request, product_id):
 
     product = get_object_or_404(Product, id =product_id)
-
+    avatares = Avatar.objects.filter(user=request.user.id)
     return render(request, 'products/product.html',{
-        'product' : product
+        'product' : product,
+        'url' : avatares[0].imagen.url
     })
 
 
@@ -162,6 +166,7 @@ def save_article(request):
 
 def create_full_article(request):
     articulo = None # Crear la variable articulo fuera del bloque condicional
+    avatares = Avatar.objects.filter(user=request.user.id)
     if request.method == "POST":
         formulario = ArtForm(request.POST,request.FILES)
         if formulario.is_valid():
@@ -191,12 +196,14 @@ def create_full_article(request):
     else:
         formulario = ArtForm()
     return render(request, 'articles/create_full_article.html',{
-        'form' : formulario
+        'form' : formulario,
+        'url' : avatares[0].imagen.url
     })
 
 
 def create_category(request):
     categoria = None # Crear la variable articulo fuera del bloque condicional
+    avatares = Avatar.objects.filter(user=request.user.id)
     if request.method == "POST":
         formulario = CatForm(request.POST)
         if formulario.is_valid():
@@ -224,13 +231,14 @@ def create_category(request):
     else:
         formulario = CatForm()
     return render(request, 'categories/create_category.html',{
-        'form' : formulario
-    })
+        'form' : formulario,
+        'url' : avatares[0].imagen.url})
 
 
 
 def create_product(request):
     producto = None # Crear la variable articulo fuera del bloque condicional
+    avatares = Avatar.objects.filter(user=request.user.id)
     if request.method == "POST":
         formulario = ProdForm(request.POST,request.FILES)
         if formulario.is_valid():
@@ -261,7 +269,8 @@ def create_product(request):
     else:
         formulario = ProdForm()
     return render(request, 'products/create_product.html',{
-        'form' : formulario
+        'form' : formulario,
+        'url' : avatares[0].imagen.url
     })
 
 
@@ -270,7 +279,8 @@ def create_product(request):
 #######  BUSCAR RECETA Y PRODUCTO #######
 
 def busqueda_articulo(request):
-    return render(request,'articles/buscar_articulo.html')
+    avatares = Avatar.objects.filter(user=request.user.id)
+    return render(request,'articles/buscar_articulo.html',{'url' : avatares[0].imagen.url })
 
 
 
@@ -280,8 +290,9 @@ def buscar(request):
 
         articulo = request.POST['title']
         articulos = Article.objects.filter(title__icontains= articulo)
+        avatares = Avatar.objects.filter(user=request.user.id)
 
-        return render(request,"articles/resultados_busqueda.html",{"articulos":articulos})
+        return render(request,"articles/resultados_busqueda.html",{"articulos":articulos,'url' : avatares[0].imagen.url })
     
     else:
         respuesta = "No enviaste datos"
@@ -291,7 +302,8 @@ def buscar(request):
     
 
 def busqueda_producto(request):
-    return render(request,'products/buscar_producto.html')
+    avatares = Avatar.objects.filter(user=request.user.id)
+    return render(request,'products/buscar_producto.html',{'url' : avatares[0].imagen.url })
 
 
 
@@ -301,8 +313,9 @@ def buscar_p(request):
 
         producto = request.POST['name']
         productos = Product.objects.filter(name__icontains= producto)
+        avatares = Avatar.objects.filter(user=request.user.id)
 
-        return render(request,"products/resultados_busquedaP.html",{"productos":productos})
+        return render(request,"products/resultados_busquedaP.html",{"productos":productos,'url' : avatares[0].imagen.url })
     
     else:
         respuesta = "No enviaste datos"
@@ -321,6 +334,8 @@ def modificar_articulo(request, id):
         'form' : ArtForm(instance= articulo)
     }
 
+    avatares = Avatar.objects.filter(user=request.user.id)
+
      # Verificar si el usuario actual es el autor del artículo
     if request.user != articulo.author and not request.user.is_superuser:
         # Si el usuario actual no es el autor del artículo, redirigir a la página de inicio
@@ -335,7 +350,11 @@ def modificar_articulo(request, id):
             return redirect('list_articles')
         
         data['form'] = formulario
-    return render(request, 'articles/modificar.html', data)
+       
+    return render(request, 'articles/modificar.html',{
+        'form': ArtForm(instance=articulo),
+        'url': avatares[0].imagen.url
+    })
 
 
 
@@ -349,6 +368,7 @@ def modificar_producto(request, id):
         'form' : ProdForm(instance= producto)
     }
 
+    avatares = Avatar.objects.filter(user=request.user.id)
      # Verificar si el usuario actual es el autor del artículo
     if request.user != producto.author and not request.user.is_superuser:
         # Si el usuario actual no es el autor del artículo, redirigir a la página de inicio
@@ -363,7 +383,11 @@ def modificar_producto(request, id):
             return redirect('list_productos')
         
         data['form'] = formulario
-    return render(request, 'products/modificar.html', data)
+    return render(request, 'products/modificar.html', {
+        'form' : ProdForm(instance= producto),
+        'url': avatares[0].imagen.url
+
+    })
 
 
 
