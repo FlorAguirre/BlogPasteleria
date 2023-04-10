@@ -47,22 +47,3 @@ Antes de visualizar la página de Inicio el usuario deberá iniciar sesión o re
 12. Selección del Avatar, se deberá hacer click en la imagen del avatar para poder seleccionar un avatar diferente.
 
 
-## Requisitos de la pre-entrega:
-
-1. Link de GitHub con el proyecto totalmente subido a la plataforma: https://github.com/FlorAguirre/BlogRecetas
-
-2. Herencia de HTML. (Se encuentrán en todos los HTML)
-
-3. Por lo menos 3 clases en models: Se han creado models de 
-- Product
-- Article
-- Category
-- Page
-
-4. Un formulario para buscar algo en la BD: Realice dos formularios para busqueda en la base de datos:
-- Para Productos
-- Para Recetas
-
-5. Readme que indique el orden en el que se prueban las cosas y/o donde están las funcionalidades: Hecho.
-
-
